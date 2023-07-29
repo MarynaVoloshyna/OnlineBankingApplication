@@ -1,11 +1,8 @@
 package com.voloshyna.onlinebankingapplication.entity;
 
-import com.voloshyna.onlinebankingapplication.staticData.TransactionType;
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 @Getter
 @Setter
@@ -46,18 +43,5 @@ public class BankAccount {
     public BankAccount(Client client, Currency currency) {
         this.client = client;
         this.currency = currency;
-    }
-
-
-    @Override
-    public String toString() {
-        return "BankAccount{" +
-                "id=" + id +
-                ", currency=" + currency +
-                ", currentSum=" + currentSum +
-                ", accountNumber='" + accountNumber + '\'' +
-                ", openingDate=" + openingDate +
-                ", client=" + client +
-                '}';
     }
 }

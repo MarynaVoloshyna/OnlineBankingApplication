@@ -48,7 +48,6 @@ a{
 
 a:hover{
     opacity: 0.9;
-    border-bottom: #105479;
 }
 .nav{
     background-color: #ffbb32ed;
@@ -188,6 +187,7 @@ a:hover{
     animation: showLogin .3s ease-in forwards;
     border: 1px solid #eef9fe;
     box-shadow: 0px 4px 4px 0px #00000040;
+    height: fit-content;
 }
 
 @keyframes showLogin {
@@ -227,6 +227,7 @@ a:hover{
     animation: showSignup .3s ease-in forwards;
     border: 1px solid #eef9fe;
     box-shadow: 0px 4px 4px 0px #00000040;
+    height: fit-content;
 }
 
 @keyframes showSignup {

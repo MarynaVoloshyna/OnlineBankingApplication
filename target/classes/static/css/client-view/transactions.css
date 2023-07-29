@@ -1,5 +1,5 @@
 body{
-    background-image: url('/static/image/InsideBG.png');
+    background-image: url('/static/image/DesctopBG.png');
     background-repeat:no-repeat;
     background-size: cover;
     text-transform: uppercase;
@@ -103,8 +103,8 @@ a:hover{
 
 @media screen and (max-width: 1200px) {
     body {
-        background-image: url('/static/image/mobileBg1.png');
-        background-repeat: no-repeat;
+        background-image: url('/static/image/mobileBG.png');
+        background-repeat:no-repeat;
         background-size: cover;
         min-height: 100%;
     }
@@ -128,7 +128,7 @@ a:hover{
 
 @media screen and (max-width: 800px) {
     body {
-        background-image: url('/static/image/mobileBg1.png');
+        background-image: url('/static/image/mobileBG.png');
         background-repeat: no-repeat;
         background-size: cover;
         min-height: 100%;

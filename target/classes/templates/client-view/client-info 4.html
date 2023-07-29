@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{client-panel.html}">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/client-dashboard.css" >
+
+    <title>Info</title>
+
+<body>
+<div layout:fragment="content2">
+
+
+<div class="col-md-6 offset-3 mt-3">
+    <form class="form-control"   th:object="${client}">
+        <div class="mb-3 mt-3">
+            <label class="form-label"> Date of registration</label>
+            <input type="text" name="dateOfRegistration" class="form-control" th:value="${client.dateOfRegistration}">
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label"> First Name</label>
+            <input type="text" name="firstName" class="form-control" th:value="${client.getFirstName()}">
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label">Last Name</label>
+            <input type="text" name="lastName" class="form-control" th:value="${client.getLastName()}">
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label">Email</label>
+            <input type="text" name="email" class="form-control" th:value="${client.user.getEmail()}">
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label">Tax Number</label>
+            <input type="text" name="email" class="form-control" th:value="${client.getTaxNumber()}" readonly="readonly">
+        </div>
+
+        <button type="submit" class= "btn btn-signup__wellcome" >
+            <a th:href="@{/dashboard}">HOME
+            </a>
+            </button>
+
+    </form>
+
+
+
+</div>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+</body>
+</html>

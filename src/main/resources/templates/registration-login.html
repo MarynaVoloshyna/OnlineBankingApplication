@@ -15,7 +15,7 @@
     <body>
     <ul class="nav justify-content-center">
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"><img src="/static/image/logo.svg" alt="Logo"
+            <a class="nav-link active" aria-current="page" href="#" th:href="@{/}"><img src="/static/image/logo.svg" alt="Logo"
                                                                          width="50px"></a>
         </li>
         <li class="nav-item">
@@ -97,17 +97,8 @@
                     </button>
                     <form class="form form-login">
                         <fieldset>
-<!--                            <legend>Please, enter your email and password for login.</legend>-->
-<!--                            <div class="input-block">-->
-<!--                                <label for="login-email">E-mail</label>-->
-<!--                                <input id="login-email" type="email" required>-->
-<!--                            </div>-->
-<!--                            <div class="input-block">-->
-<!--                                <label for="login-password">Password</label>-->
-<!--                                <input id="login-password" type="password" required>-->
-<!--                            </div>-->
+
                         </fieldset>
-<!--                        <button type="submit" class="btn-login">Login</button>-->
                     </form>
                 </div>
 
@@ -140,8 +131,8 @@
                             <div class="input-block">
                                 <label for="email" class="form-label"> Email </label>
                                 <input id="email" type="email" name="email" class="form-control" th:field="${client.user.email}" required>
-                                <span th:if="${#fields.hasErrors('client.user.email')}" th:errors="*{client.user.email}">Обліковий запис з такою електронною поштою вже існує!</span>
-                                <span id="emailError" style="color: red; display: none; max-width: 300px; font-size: 10px">Please, input valid email</span>
+                                <span th:if="${#fields.hasErrors('client.user.email')}" th:errors="*{client.user.email}">User already exist</span>
+                                <span id="emailError" style="color: red; display: none; max-width: 300px; font-size: 10px;">Please, input valid email</span>
 
                             </div>
                             <div class="input-block">
@@ -154,32 +145,7 @@
                         <button type="submit" class="btn-signup">REGISTRATE</button>
                     </form>
 
-                    <!--                    <form class="form form-signup">-->
-<!--                        <fieldset>-->
-<!--                            <legend>Please, enter your email, password and password confirmation for sign up.</legend>-->
-<!--                            <div class="input-block">-->
-<!--                                <label for="name">First name</label>-->
-<!--                                <input id="name" type="text" required>-->
-<!--                            </div>-->
-<!--                            <div class="input-block">-->
-<!--                                <label for="lastName">Last Name</label>-->
-<!--                                <input id="lastName" type="text" required>-->
-<!--                            </div>-->
-<!--                            <div class="input-block">-->
-<!--                                <label for="taxNumber">Tax number</label>-->
-<!--                                <input id="taxNumber" type="text" required>-->
-<!--                            </div>-->
-<!--                            <div class="input-block">-->
-<!--                                <label for="signup-email">E-mail</label>-->
-<!--                                <input id="signup-email" type="email" required>-->
-<!--                            </div>-->
-<!--                            <div class="input-block">-->
-<!--                                <label for="signup-password">Password</label>-->
-<!--                                <input id="signup-password" type="password" required>-->
-<!--                            </div>-->
-<!--                        </fieldset>-->
-<!--                        <button type="submit" class="btn-signup">Continue</button>-->
-<!--                    </form>-->
+
                 </div>
             </div>
         </section>
@@ -203,6 +169,8 @@
         })
     })
 
+
+
 // VALIDATION
     function validateEmail() {
         const emailInput = document.getElementById("email");
@@ -210,21 +178,23 @@
         const emailError = document.getElementById("emailError");
 
         if (!emailPattern.test(emailInput.value)) {
-            emailError.style.display = "block"; // Показуємо повідомлення про помилку для електронної пошти
+            emailError.style.display = "block";
             return false;
         }
 
-        // Додаткова перевірка на домен ".ru" та інші допустимі домени
-        const allowedDomains = ["gmail.com", "yahoo.com", "outlook.com", "example.com", "mail.com"]; // інші допустимі домени можна додати
+        // Additional check for allowed domains
+        const allowedDomains = ["gmail.com", "yahoo.com", "outlook.com", "example.com", "mail.com", "ukr.net" ]; // інші допустимі домени можна додати
         const enteredDomain = emailInput.value.split("@")[1].toLowerCase();
         if (allowedDomains.indexOf(enteredDomain) === -1) {
-            emailError.innerText = "Invalid post domain. We do not serve customers from russia. Allowed domains:  " + allowedDomains.join(", ");
-            emailError.style.display = "block"; // Показуємо повідомлення про помилку
+            emailError.innerText = "Invalid domain.  Allowed domains:  " + allowedDomains.join(", ");
+            emailError.style.display = "block";
+
             return false;
         }
 
-        emailError.style.display = "none"; // Приховуємо повідомлення про помилку
+        emailError.style.display = "none";
         return true;
+
     }
 
     function validatePassword() {
@@ -233,15 +203,22 @@
         const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}|:"<>?~]).{8,}$/;
         if (!passwordPattern.test(passwordInput.value)) {
             passwordError.style.display = "block"; // Показуємо повідомлення про помилку для пароля
+
             return false;
         }
         passwordError.style.display = "none";
         return true;
+
     }
 
     function validateForm() {
         return validateEmail() && validatePassword();
+
     }
+
+
+
+
 </script>
 </body>
 </html>

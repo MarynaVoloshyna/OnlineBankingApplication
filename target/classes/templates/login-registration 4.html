@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<!--xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"-->
+<!--layout:decorate="~{main-panel.html}"-->
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css">-->
+<!--        <link rel="stylesheet" href="/static/css/friendlybank.css" >-->
+<!--        <link rel="stylesheet" href="/static/css/registration.css" >-->
+        <link rel="stylesheet" type="text/css"
+              href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="/static/css/main-view/registration-login.css">
+
+        <title>LOG IN</title>
+    </head>
+    <body>
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"><img src="/static/image/logo.svg" alt="Logo"
+                                                                         width="50px"></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" style="color: #105479">About us</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" style="color: #105479">Benefits</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" style="color: #105479">Our values</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" style="color: #105479">Open Account</a>
+        </li>
+        <li class="nav-item manager-icon">
+            <a class="nav-link" href="#" style="color: #105479" th:href="@{/manager/registration}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-person-vcard" viewBox="0 0 16 16">
+                    <path d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5ZM9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8Zm1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5Z"/>
+                    <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2ZM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8.96c.026-.163.04-.33.04-.5C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1.006 1.006 0 0 1 1 12V4Z"/>
+                </svg>
+            </a>
+        </li>
+
+    </ul>
+    <nav class="navbar">
+        <div class="container-fluid">
+            <!--        <a class="navbar-brand" href="#"><img src="/static/image/logo.svg" alt="Logo" width="50px"></a>-->
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+                    aria-controls="offcanvasNavbar">
+                <span><img src="/static/image/logo.svg" alt="Logo" width="50px"></span>
+                <!--            class="navbar-toggler-icon"-->
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#" th:href="@{/login}">LOGIN</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" th:href="@{/home/registration}">SIGN IN</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" th:href="@{/home/registration}">OPEN BANK ACCOUNT</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" th:href="@{/login}">TRANSFER MONEY</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">CONTACT US</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" th:href="@{/manager/registration}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-person-vcard" viewBox="0 0 16 16">
+                                    <path d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5ZM9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8Zm1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5Z"/>
+                                    <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2ZM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8.96c.026-.163.04-.33.04-.5C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1.006 1.006 0 0 1 1 12V4Z"/>
+                                </svg></a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+<!--    <div layout:fragment="content3">-->
+    <div class="container-fluid">
+        <section class="forms-section">
+            <div class="forms">
+                <div class="form-wrapper is-active">
+                    <button type="button" class="switcher switcher-login">
+                        <a class="registration-link" href="#" th:href="@{/login}">LOGIN</a>
+                        <span class="underline"></span>
+                    </button>
+                    <form th:action="@{/login}" th:method="post" class="form form-login">
+                        <div th:if="${param.error}">
+                            <div class="alert alert-danger">Wrong login or password!</div>
+                        </div>
+                        <div th:if="${param.session}">
+                            <div class="alert alert-danger">You have been log in at another device</div>
+                        </div>
+                        <div th:if="${param.logout}">
+                            <div class="alert alert-info">You have been logout!</div>
+                        </div>
+                        <fieldset>
+                            <legend>Please, enter your email and password for login.</legend>
+                            <div class="input-block login-input">
+                                <label for="username">E-mail</label>
+                                <input id="username" type="email"  name="username">
+                            </div>
+                            <div class="input-block login-input">
+                                <label for="password">Password</label>
+                                <input id="password" type="password" name="password">
+                            </div>
+                        </fieldset>
+                        <button type="submit" class="btn-login">LOG IN</button>
+                    </form>
+                </div>
+                <div class="form-wrapper">
+                    <button type="button" class="switcher switcher-signup">
+                        <a class="registration-link" href="#" th:href="@{/home/registration}">SignUp</a>
+                        <span class="underline"></span>
+                    </button>
+                    <form class="form form-signup">
+<!--                        <fieldset>-->
+<!--                            <legend>Please, enter your email, password and password confirmation for sign up.</legend>-->
+<!--                            <div class="input-block">-->
+<!--                                <label for="signup-email">E-mail</label>-->
+<!--                                <input id="signup-email" type="email" required>-->
+<!--                            </div>-->
+<!--                            <div class="input-block">-->
+<!--                                <label for="signup-password">Password</label>-->
+<!--                                <input id="signup-password" type="password" required>-->
+<!--                            </div>-->
+<!--                            <div class="input-block">-->
+<!--                                <label for="signup-password-confirm">Confirm password</label>-->
+<!--                                <input id="signup-password-confirm" type="password" required>-->
+<!--                            </div>-->
+<!--                        </fieldset>-->
+                        <button type="submit" class="btn-signup">Continue</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+<!--    </div>-->
+<script>
+    const switchers = [...document.querySelectorAll('.switcher')]
+
+    switchers.forEach(item => {
+        item.addEventListener('click', function() {
+            switchers.forEach(item => item.parentElement.classList.remove('is-active'))
+            this.parentElement.classList.add('is-active')
+        })
+    })
+
+
+</script>
+</body>
+</html>

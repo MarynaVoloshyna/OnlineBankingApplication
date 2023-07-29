@@ -27,15 +27,13 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import jakarta.servlet.http.HttpServletResponse;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 import java.io.IOException;
-
-
-
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.util.*;
+
 
 @AllArgsConstructor
 @Controller
@@ -167,6 +165,7 @@ public class TransactionController {
 @GetMapping("/downloadReceipt")
 public void downloadReceipt(HttpServletResponse response, @RequestParam ("transactionId") Long transactionId) {
         Transaction transaction = transactionService.findTransactionById(transactionId);
+
     try {
         // Generate PDF receipt
         PDDocument document = new PDDocument();

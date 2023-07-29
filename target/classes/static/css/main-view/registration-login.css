@@ -227,6 +227,7 @@ a:hover{
     animation: showSignup .3s ease-in forwards;
     border: 1px solid #eef9fe;
     box-shadow: 0px 4px 4px 0px #00000040;
+    height: fit-content;
 }
 
 @keyframes showSignup {

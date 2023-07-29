@@ -65,47 +65,23 @@ public class ManagerController {
                 manager.getUser().getPassword());
         model.addAttribute("successRegistered", "You have been successfully registered. Please log in!");
 
-        return "manager-view/manager-form";
+        return "redirect:/login";
     }
 
-//    @PostMapping("/save")
-//    public String saveManager(@Valid Manager manager, BindingResult bindingResult) {
-//        User user = userService.getUserByEmail(manager.getUser().getEmail());
-//        String friendlyBankDomain = environment.getProperty("friendly.bank.domain");
-//
-//        if (user != null) {
-//            bindingResult.rejectValue("user.email", null,
-//                    "Account with this email already registered");
-//        }
-//        if (!manager.getUser().getEmail().contains(friendlyBankDomain)) {
-//            bindingResult.rejectValue("manager.user.email", null, "You are not allowed to be a manager");
-//        }
-//
-//        if (bindingResult.hasErrors()) {
-//            return "manager-view/manager-form";
-//        }
-//
-//        managerService.createManager(manager.getFirstName(),
-//                manager.getLastName(),
-//                manager.getLevel(),
-//                manager.getUser().getEmail(),
-//                manager.getUser().getPassword());
-//        return "redirect:/login";
-//
+
+
+//    @PostMapping("/dashboard")
+//    public String showManagerDashboard(Model model) {
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        String username = authentication.getName();
+//        User user = userService.getUserByEmail(username);
+//        Manager manager = managerService.findByEmail(username);
+//        System.out.println(manager);
+//        model.addAttribute("manager", manager);
+//        model.addAttribute("username", user.getManager().getFirstName());
+//        model.addAttribute("userId", user.getUserId());
+//        return "manager-view/manager-dashboard";
 //    }
-
-    @PostMapping("/dashboard")
-    public String showManagerDashboard(Model model) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String username = authentication.getName();
-        User user = userService.getUserByEmail(username);
-        Manager manager = managerService.findByEmail(username);
-        System.out.println(manager);
-        model.addAttribute("manager", manager);
-        model.addAttribute("username", user.getManager().getFirstName());
-        model.addAttribute("userId", user.getUserId());
-        return "manager-view/manager-dashboard";
-    }
 
     //MANAGER INFO
     @GetMapping("/info")

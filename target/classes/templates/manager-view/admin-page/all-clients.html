@@ -15,6 +15,7 @@
 
 <div layout:fragment="content1">
     <div class="container">
+        <div class="row">
         <div class="col-md-12 mx-auto">
         <div class="card">
             <div class="card-header"> All clients of bank
@@ -28,7 +29,7 @@
         </form>
 
 
-        <table class="table table-responsive-sm mx-auto" style="max-width: fit-content">
+        <table class="table table-responsive-sm table-sm mx-auto " style="max-width: fit-content">
             <thead>
             <tr class="text-center">
                 <th>First Name</th>
@@ -52,9 +53,6 @@
                 <td th:text="${client.accountList.size()}"></td>
                 <td ><a class="btn btn-light style__a" th:href="@{/manager/update-client(clientId=${client.getId()})}">Update</a></td>
                 <td> <a class="btn btn-light style__a" th:href="@{/manager/view-client-accounts(clientId=${client.getId()})}">View</a></td>
-
-
-
             </tr>
             </tbody>
             </table>
@@ -62,6 +60,7 @@
 </div>
 </div>
     </div>
+        </div>
 </div>
 </div>
 </body>

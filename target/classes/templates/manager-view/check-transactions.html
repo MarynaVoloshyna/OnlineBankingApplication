@@ -50,10 +50,11 @@
             <tbody>
             <tr class="text-center" th:each="transaction:${transactionList}" >
 
-                <td th:text="${transaction.accountTo.accountNumber}"></td>
-                <td th:text="${transaction.accountTo.currency}"></td>
+                <td th:text="${transaction.accountTo != null ? transaction.getAccountTo().getAccountNumber() : ''}"></td>
+                <td th:text="${transaction.accountFrom.currency}"></td>
                 <td th:text="${transaction.transactionSum}"></td>
-                <td th:text="${#temporals.format(transaction.transactionDate, 'dd.MM.yyyy HH:mm')}"></td>
+                <td th:text="${transaction.transactionType}"></td>
+                <td th:text="${#temporals.format(transaction.transactionDate, 'HH:mm dd.MM.yyyy ')}"></td>
                 <td>
                     <a class="btn btn-light style__a" th:href="@{/transactions/downloadReceipt(transactionId=${transaction.id})}">Download</a>
                 </td>

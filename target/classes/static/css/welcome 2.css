@@ -1,0 +1,10 @@
+body{
+    background-image: url('../image/1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    /*background: #F4CD7E;*/
+}
+.container{
+    /*margin-top: 20%;*/
+}

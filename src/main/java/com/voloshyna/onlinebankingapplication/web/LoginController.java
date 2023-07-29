@@ -27,11 +27,11 @@ public class LoginController {
     public String showLoginForm(){
         return"login-registration";
     }
-    @PostMapping("/default")
-    public String redirectingToHomes(HttpServletRequest request){
-        if(request.isUserInRole("MANAGER")) return "redirect:/manager/dashboard";
-        return "redirect:/home/dashboard";
-    }
+//    @PostMapping("/default")
+//    public String redirectingToHomes(HttpServletRequest request){
+//        if(request.isUserInRole("MANAGER")) return "redirect:/manager/dashboard";
+//        return "redirect:/home/dashboard";
+//    }
 
     @GetMapping("/dashboard")
     public String showDashboard(Model model) {

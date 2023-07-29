@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/static/css/client-view/client-panel.css" >
+    <title>Client Panel</title>
+</head>
+<body>
+<ul class="nav justify-content-center">
+    <li class="nav-item" style=" margin-right: 38%;">
+        <a class="nav-link active" aria-current="page" href="#" th:href="@{/dashboard}"><img src="/static/image/logo.svg" alt="Logo" width="50px"></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#" style="color: #105479" th:href="@{/home/manager-info}">My manager</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#" th:href="@{/home/client-info}" style="color: #105479">My Info</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#" style="color: #105479">Currency</a>
+    </li>
+    <li class="nav-item">
+        <form action="/logout" method="post" th:action="@{/logout}">
+            <button type="submit" class="btn btn-link text-decoration-none" onclick="return confirm('Are you sure you want to log out?')">
+                <i class="bi bi-box-arrow-right"></i>
+            </button>
+        </form>
+    </li>
+</ul>
+
+<nav class="navbar">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#" th:href="@{/dashboard}"><img src="/static/image/logo.svg" alt="Logo" width="50px"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header"> MAIN MENU
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#" th:href="@{/account/create}"> <img src="/static/image/accounts.png" alt="Account icon" width="30px">CREATE ACCOUNT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#" th:href="@{/transactions/replenishment}"><img src="/static/image/replenishment.png" alt="Replenishment icon" width="30px">Replenishment</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#" th:href="@{/transactions/withdraw}"><img src="/static/image/transfer.png" alt="Transfer money icon" width="30px">Transfer money</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#" th:href="@{/transactions/all}"><img src="/static/image/history.png" alt="Transactions history icon" width="30px">Transactions history</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#" th:href="@{/home/manager-info}"><img src="/static/image/manager.png" alt="" width="20px">My manager</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#" th:href="@{/home/client-info}"><img src="/static/image/home.png" alt="Info icon" width="30px"> My info</a>
+                    </li>
+                    <li class="nav-item">
+                        <form action="/logout" method="post" th:action="@{/logout}">
+                            <button type="submit" class="btn btn-link text-decoration-none" onclick="return confirm('Are you sure you want to log out?')">
+                                <i class="bi bi-box-arrow-right"></i>
+                            </button>
+                        </form></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<section layout:fragment="content2">
+
+</section>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+</body>
+</html>
