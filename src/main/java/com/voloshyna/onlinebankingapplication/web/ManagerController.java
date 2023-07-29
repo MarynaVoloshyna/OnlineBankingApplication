@@ -160,7 +160,8 @@ public class ManagerController {
     }
 
     // CHECK EACH CLIENTS BANK ACCOUNT (TRANSACTIONS CHECK AVAILABLE)
-    @RequestMapping(value = "/view-client-accounts", method = {RequestMethod.GET, RequestMethod.POST})
+//    @RequestMapping(value = "/view-client-accounts", method = {RequestMethod.GET, RequestMethod.POST})
+    @GetMapping("/view-client-accounts")
     public String viewClientAccounts(@RequestParam("clientId") Long clientId,
                                      Model model,
                                      HttpSession session) {

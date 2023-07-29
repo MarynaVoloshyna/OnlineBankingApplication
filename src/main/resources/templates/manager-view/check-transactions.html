@@ -50,7 +50,7 @@
             <tbody>
             <tr class="text-center" th:each="transaction:${transactionList}" >
 
-                <td th:text="${transaction.accountTo.accountNumber}"></td>
+                <td th:text="${transaction.accountTo != null ? transaction.getAccountTo().getAccountNumber() : ''}"></td>
                 <td th:text="${transaction.accountTo.currency}"></td>
                 <td th:text="${transaction.transactionSum}"></td>
                 <td th:text="${#temporals.format(transaction.transactionDate, 'dd.MM.yyyy HH:mm')}"></td>
