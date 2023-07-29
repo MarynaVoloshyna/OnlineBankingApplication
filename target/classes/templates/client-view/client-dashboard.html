@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/client-dashboard.css" >
+
+    <title>Welcome to FriendlyBank</title>
+
+<body>
+<ul class="nav justify-content-center">
+    <li class="nav-item" style=" margin-right: 38%;">
+        <a class="nav-link active" aria-current="page" href="#" th:href="@{/}"><img src="/static/image/logo.svg" alt="Logo" width="50px"></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#" style="color: #105479" th:href="@{/home/manager-info}">My manager</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#" th:href="@{/home/client-info}" style="color: #105479">My Info</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#" style="color: #105479">Currency</a>
+    </li>
+    <li class="nav-item">
+        <form action="/logout" method="post" th:action="@{/logout}">
+        <input type="submit" value="Logout">
+        </form>
+
+<!--        <a class="nav-link" href="#" style="color: #105479" th:href="@{/logout}">Log Out</a>-->
+    </li>
+
+
+</ul>
+<nav class="navbar">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#" th:href="@{/dashboard}"><img src="/static/image/logo.svg" alt="Logo" width="50px"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+<!--                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>-->
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#" th:href="@{/home/manager-info}">My manager</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" th:href="@{/home/client-info}">My Info</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Currency</a></li>
+<!--                            <li><a class="dropdown-item" href="#">Another action</a></li>-->
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li class="nav-item">
+                                <form action="/logout" method="post" th:action="@{/logout}">
+                                    <input type="submit" value="Logout" onclick="return confirm('You sure you want to log out?')">
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex mt-3" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container text-center">
+    <p class="card-text">Hi, [[${username}]], your ID is [[${userId}]]</p>
+    <div class="row ">
+        <div class="col-md-6"><div class="card mb-3" >
+
+            <div class="card-body" style="border-color: #105479 ">
+                <h5 class="card-title"><img src="/static/image/accounts.png" alt="" width="50px"> Open Account </h5>
+                <p class="card-text">You may open three regular bank account with different currency - UAH, USD and EUR.</p>
+                <a href="#" class="btn btn-light btn-signup__wellcome" th:href="@{/account/create}">Open</a>
+            </div>
+        </div>
+        </div>
+        <div class="col-md-6"><div class="card mb-3 " style="border-color: #1773a4">
+            <div class="card-body" >
+                <h5 class="card-title"><img src="/static/image/replenishment.png" alt="" width="50px"> Replenishment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-light btn-signup__wellcome" th:href="@{/transactions/replenishment}">Perform</a>
+            </div>
+        </div></div>
+        <div class="col-md-6"><div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title"><img src="/static/image/transfer.png" alt="" width="50px"> Make Transaction</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-light btn-signup__wellcome" th:href="@{/transactions/withdraw}">Perform</a>
+            </div>
+        </div></div>
+        <div class="col-md-6"><div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title"><img src="/static/image/history.png" alt="" width="50px">Transactions History</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-light btn-signup__wellcome"  th:href="@{/transactions/all}">See history</a>
+            </div>
+        </div></div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+</body>
+</html>

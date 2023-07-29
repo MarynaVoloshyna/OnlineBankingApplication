@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{main-panel.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Login</title>
+    <script src="https://kit.fontawesome.com/b3df73c745.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/friendlybank.css" >
+    <link rel="stylesheet" href="/static/css/registration.css" >
+    <link rel="stylesheet" href="/static/css/login.css" >
+
+</head>
+<body>
+
+<div layout:fragment="content3">
+
+<div class="container">
+    <section class="forms-section">
+        <!-- <h1 class="section-title">Animated Forms</h1> -->
+        <!--Success message-->
+        <div th:if="${param.success}">
+            <div class="alert alert-info">You've successfully registered
+                to our awesome app!</div>
+        </div>
+
+        <div class="forms">
+            <div class="form-wrapper is-active login-form-wrapper">
+                <button type="button" class="switcher switcher-login">
+                    <a href="#" th:href="@{/login}">Login</a>
+                    <span class="underline"></span>
+                </button>
+                <form th:action="@{/login}" th:method="post" class="form form-login">
+                    <div th:if="${param.error}">
+                        <div class="alert alert-danger">Wrong login or password!</div>
+                    </div>
+                    <div th:if="${param.session}">
+                        <div class="alert alert-danger">You have been log in at another device</div>
+                    </div>
+                    <div th:if="${param.logout}">
+                        <div class="alert alert-info">You have been logout!</div>
+                    </div>
+
+
+                    <fieldset>
+                        <legend>Please, enter your email and password for login.</legend>
+
+                        <div class="input-block login-input">
+                            <label for="username">E-mail</label>
+                            <input id="username" type="email"  name="username">
+                        </div>
+                        <div class="input-block login-input">
+                            <label for="password">Password</label>
+                            <input id="password" type="password" name="password">
+                        </div>
+
+                    </fieldset>
+                    <button type="submit" class="btn-login" >LOGIN</button>
+                </form>
+            </div>
+
+
+
+
+            <div class="form-wrapper">
+                <button type="button" class="switcher switcher-signup">
+                    <a class="registration-link" href="#" th:href="@{/home/registration}">SignUp</a>
+                    <span class="underline"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+<script>
+    const switchers = [...document.querySelectorAll('.switcher')]
+    switchers.forEach(item => {
+        item.addEventListener('click', function() {
+            switchers.forEach(item => item.parentElement.classList.remove('is-active'))
+            this.parentElement.classList.add('is-active')
+        })
+    })</script>
+</body>
+</html>
+

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{client-panel.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/client-view/client-dashboard.css">
+</head>
+<body>
+<div layout:fragment="content2">
+
+<div class="container mt-4 mb-5">
+    <div class="welcome__message">
+        <span class="welcome__span">Welcome</span> <span class="welcome__span" th:text="${username}"></span><span class="welcome__span">!</span>
+    </div>
+
+    <div class="col-md-4" th:if="${bankAccounts.isEmpty()}">
+        <!-- Виводимо повідомлення, якщо список рахунків порожній -->
+        <div class="alert alert-info">
+            You don't have an account yet.
+        </div>
+    </div>
+
+<!--    CREDIT CARD VIEW-->
+
+    <div class="row">
+        <!-- Ліва колонка з 3 вертикальними картками -->
+      <div class="col-md-4" th:each="bankAccount:${bankAccounts}">
+<!--          <form th:action="@{/transactions/history(bankAccountNumber=${bankAccount.getAccountNumber()})}" method="post">-->
+
+          <form th:action="@{/transactions/history}" method="post">
+              <input type="hidden" name="bankAccountNumber" th:value="${bankAccount.getAccountNumber()}">
+              <button type="submit" class="card__button" th:href="@{/transactions/history(bankAccountNumber=${bankAccount.getAccountNumber()})}">
+                  <div class="card card__style mb-5 mx-auto">
+                <div class="top">
+                    <h2>FRIENDLYBANK</h2>
+                    <img src="/static/image/yellowLogov2.png" alt="" width="30px">
+                </div>
+                <div class="infos">
+                    <section class="card-number">
+                        <p>Card Number</p>
+                        <h1 th:utext="${#strings.replace(bankAccount.accountNumber, '(.{4})(?=.{4})', '$1 ')}" id="cardNumber"></h1>
+                    </section>
+                    <div class="bottom">
+                        <aside class="infos--bottom">
+                            <section class="card-sum">
+                                <h2 th:text="${bankAccount.currentSum} + ' ' + ${bankAccount.currency}"></h2>
+                            </section>
+
+                            <section class="date">
+                                <p>Expiry date</p>
+                                <h3>08/24</h3>
+                            </section>
+<!--                            <section>-->
+<!--                                <p>Currency</p>-->
+<!--                                <h3 th:text="${bankAccount.currency}"></h3>-->
+<!--                            </section>-->
+
+                        </aside>
+                        <aside>
+                            <section>
+                                <img src="/static/image/VISA.png" class="brand" />
+                            </section>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+<!--          </a>-->
+             </button>
+          </form>
+        </div>
+    </div>
+
+
+
+
+    <div class="container text-center block__menu">
+        <div class="row row-cols-3">
+            <!-- Create Account Link -->
+            <div class="col">
+                <!-- Add Thymeleaf conditional expression to check if bankAccounts size is less than 3 -->
+                <a th:if="${bankAccounts.size() < 3}" th:href="@{/account/create}">
+                    <div class="card border-info mb-5 text-center text-uppercase ">
+                        <div class="card-header style__create"> <img src="/static/image/accounts.png" alt="" width="50px"></div>
+                        <div class="card-body">
+                            <p class="card-text">CREATE ACCOUNT</p>
+                        </div>
+                    </div>
+                </a>
+                <!-- Add disabled attribute to the anchor tag if the client already has 3 accounts -->
+                <a th:if="${bankAccounts.size() == 3}" title="You have reached the maximum number of accounts" data-bs-toggle="tooltip" data-bs-title="Default tooltip">
+                    <div class="card border-info mb-5 text-center text-uppercase " style="pointer-events: none; opacity: 0.5;">
+                        <div class="card-header style__create"> <img src="/static/image/accounts.png" alt="" width="50px"></div>
+                        <div class="card-body">
+                            <p class="card-text">CREATE ACCOUNT</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col"><a th:href="@{/transactions/replenishment}" data-bs-toggle="tooltip" data-bs-title="Default tooltip">
+
+                <div class="card border-info mb-5 text-center text-uppercase ">
+                    <div class="card-header style__create">
+                        <img src="/static/image/replenishment.png" alt="" width="50px">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Replenishment
+                        </p>
+                    </div>
+                </div>
+
+            </a></div>
+
+            <div class="col">
+                <form action="/transactions/withdraw" method="post">
+                <a th:href="@{/transactions/withdraw}" >
+                    <div class="card border-info mb-5 text-center text-uppercase ">
+                        <div class="card-header style__create">
+                            <img src="/static/image/transfer.png" alt="" width="50px">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Transfer money
+                            </p>
+                        </div>
+                    </div>
+
+            </a>
+                </form>
+            </div>
+<!--            <div class="col">-->
+<!--                <form th:action="@{transactions/all}" method="post">-->
+<!--                    &lt;!&ndash; Опціонально: якщо у вас є дані для відправки, вони можуть бути додані до форми &ndash;&gt;-->
+<!--                    <input type="hidden" name="someData" value="value">-->
+
+<!--                    <button type="submit" class="card border-info mb-5 text-center text-uppercase style__create">-->
+<!--                        <img src="/static/image/transfer.png" alt="" width="50px">-->
+<!--                        <div class="card-body">-->
+<!--                            <p class="card-text">Transfer money</p>-->
+<!--                        </div>-->
+<!--                    </button>-->
+<!--                </form>-->
+<!--            </div>-->
+
+        </div>
+    </div>
+    <div class="container text-center block__menu">
+        <div class="row row-cols-3 mb-3">
+
+            <div class="col ">
+                <a th:href="@{/transactions/all}">
+
+                    <div class="card border-info mb-5 text-center text-uppercase ">
+                        <div class="card-header style__create"> <img src="/static/image/history.png" alt="" width="50px"></div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                history
+                            </p>
+                        </div>
+                    </div>
+            </a>
+            </div>
+            <div class="col">
+                <a th:href="@{/home/manager-info}" >
+
+                <div class="card border-info mb-5 text-center text-uppercase ">
+                    <div class="card-header style__create">
+                        <img src="/static/image/manager.png" alt="" width="30px">
+                       </div>
+                    <div class="card-body">
+                        <p class="card-text"> my manager
+                        </p>
+                    </div>
+                </div>
+            </a></div>
+            <div class="col">
+                <a th:href="@{/home/client-info}">
+
+                <div class="card border-info mb-5 text-center text-uppercase ">
+                    <div class="card-header style__create">
+                        <img src="/static/image/home.png" alt="" width="50px">
+                        </div>
+                    <div class="card-body">
+                        <p class="card-text">my info
+                        </p>
+                    </div>
+                </div>
+            </a></div>
+        </div>
+    </div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script><script>
+<!--    TOOLTIPS -->
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+</script>
+</body>
+</html>

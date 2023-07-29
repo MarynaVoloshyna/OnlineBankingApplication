@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{client-panel.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!-- Підключення Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!--    <link rel="stylesheet" href="/static/css/manager-dashboard.css" >-->
+    <link rel="stylesheet" type="text/css" href="/static/css/client-view/client-dashboard.css">
+    <link rel="stylesheet" href="/static/css/transaction-list.css" >
+    <link rel="stylesheet" type="text/css" href="/static/css/client-view/transactions-history.css">
+</head>
+<body>
+<div layout:fragment="content2">
+    <div class="container">
+<!--CARD VIEW-->
+    <div class="card card__style mb-5 mx-auto">
+        <div class="top">
+            <h2>FRIENDLYBANK</h2>
+            <img src="/static/image/yellowLogov2.png" alt="" width="30px">
+        </div>
+        <div class="infos">
+            <section class="card-number">
+                <p>Card Number</p>
+                <h1 th:utext="${#strings.replace(bankAccountNumber, '(.{4})(?=.{4})', '$1 ')}" id="cardNumber"></h1>
+            </section>
+            <div class="bottom">
+                <aside class="infos--bottom">
+                    <section class="card-sum">
+                        <h2 th:text="${bankAccount.currentSum} + ' ' + ${bankAccount.currency}"></h2>
+                    </section>
+
+                    <section class="date">
+                        <p>Expiry date</p>
+                        <h3>08/24</h3>
+                    </section>
+                    <!--                            <section>-->
+                    <!--                                <p>Currency</p>-->
+                    <!--                                <h3 th:text="${bankAccount.currency}"></h3>-->
+                    <!--                            </section>-->
+
+                </aside>
+                <aside>
+                    <section>
+                        <img src="/static/image/VISA.png" class="brand" />
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </div>
+        <div class="container buttons mx-auto">
+            <a class="btn btn-outline-light style__a" th:href="@{/transactions/withdraw}">Transfer money</a>
+            <a class="btn  btn-outline-light style__a" th:href="@{/dashboard}">Back home</a>
+        </div>
+    </div>
+<!--HISTORY LIST    -->
+    <div class="container">
+        <div class="card">
+            <div class="card-header"></div>
+            <div class="card-body">
+    <div class="table-responsive-sm">
+    <table class="table table-responsive table-sm">
+        <thead>
+        <tr>
+            <th>Date</th>
+<!--            <th>Account From</th>-->
+            <th>Account</th>
+            <th>Amount</th>
+            <th>Type</th>
+            <th>Bill</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Loop through the transactions and display the details -->
+        <tr th:each="transaction : ${transactions}" class="transaction-row">
+            <td th:text="${#temporals.format(transaction.transactionDate, ' HH:mm dd-MM-yyyy')}"></td>
+<!--            <td th:text="${transaction.accountFrom.accountNumber}"></td>-->
+            <td th:text="${transaction.accountTo != null ? transaction.getAccountTo().getClient().getLastName() : ''}"></td>
+            <td th:text="${transaction.transactionSum}"></td>
+            <td th:text="${transaction.transactionType}" th:class="${'transaction-type-' + transaction.transactionType}"></td>
+            <td class="download__link">
+                <a th:href="@{/transactions/downloadReceipt(transactionId=${transaction.id})}" class="btn style__a"><i class="bi bi-file-earmark-arrow-down" style="color: #105479"></i></a>
+            </td>
+            <td class="download__icon">
+                <a th:href="@{/transactions/downloadReceipt(transactionId=${transaction.id})}" class="style__a">
+                    <i class="bi bi-file-earmark-arrow-down" style="color: #105479"></i> </a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

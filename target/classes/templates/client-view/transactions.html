@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{client-panel.html}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/client-view/client-dashboard.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/client-view/transactions.css">
+</head>
+
+<body>
+<div layout:fragment="content2">
+    <div class="card">
+    <div class="container">
+        <div class="card-header"> All Transactions</div>
+
+            <div class="card-body ">
+                <form action="#" method="get" th:action="@{/transactions/all}">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-4 input__date">
+                    <label for="startDate">Start Date:</label>
+                    <input type="date" id="startDate" name="startDate" class="form-control" required>
+                </div>
+                <div class="col-md-4 input__date">
+                    <label for="endDate">End Date:</label>
+                    <input type="date" id="endDate" name="endDate" class="form-control" required>
+                </div>
+            </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-outline-light  mt-3 ">Filter</button>
+                </div>
+
+        </form>
+            </div>
+
+         <table class="table table-responsive table-hover">
+                <thead>
+                <tr class="text-center">
+                    <th>Date</th>
+                    <th>Account From</th>
+                    <th>Account To</th>
+                    <th>Amount</th>
+                    <th>Type</th>
+                    <th>Download link</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Loop through the transactions and display the details -->
+                <tr th:each="transaction : ${transactions}">
+                    <td th:text="${#temporals.format(transaction.transactionDate, 'HH:mm:ss dd-MM-yyyy ')}"></td>
+                    <td th:text="${transaction.accountFrom.accountNumber}"></td>
+                    <td th:text="${transaction.accountTo != null ? transaction.getAccountTo().getClient().getLastName() : ''}"></td>
+                    <td th:text="${transaction.transactionSum}"></td>
+                    <td th:text="${transaction.transactionType}"></td>
+                    <td class="download__link">
+                        <a th:href="@{/transactions/downloadReceipt(transactionId=${transaction.id})}" class="btn style__a"><i class="bi bi-file-earmark-arrow-down" style="color: #105479"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div th:if="${#lists.isEmpty(transactions)}">
+            <p>No transactions found.</p>
+        </div>
+</div>
+</div>
+</div>
+</body>
+</html>

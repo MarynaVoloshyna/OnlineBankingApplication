@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{manager-panel.html}">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/admin-view/admin-dashboard.css" >
+
+    <title>Welcome to FriendlyBank</title>
+</head>
+<body>
+<div layout:fragment="content1">
+    <div class="container-fluid">
+        <h1 class="display-6 text-center text-uppercase" style="color: #105479;">Hi, <span th:text="${manager.getFirstName()}"></span>! </h1>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="card border-info mb-5 text-center text-uppercase client_card" style="max-width: 18rem;">
+                    <div class="card-header"><span th:text="${numberOfClients}" ></span></div>
+                    <div class="card-body">
+                        <span class="card-title" style="border-bottom: 2px solid #1773a4;"> Clients </span>
+                        <p class="card-text">In your client list</p>
+                    </div>
+                </div>
+                <div class="card border-warning mb-5 text-center text-uppercase ba_card" style="max-width: 18rem; border-color: white;">
+                    <div class="card-header"> <span th:text="${numberOfTotalBankAccounts}"></span></div>
+                    <div class="card-body">
+                        <span class="card-title" style="border-bottom: 2px solid #1773a4;">Bank accounts</span>
+                        <p class="card-text">has your clients</p>
+                    </div>
+                </div>
+                <div class="card border-info mb-5 text-center text-uppercase sum_card" style="max-width: 18rem; ">
+                    <div class="card-header" style="color: #1773a4"> <span th:text="${totalSumForAllClients.intValue()}"></span> UAH </div>
+                    <div class="card-body" style="color: white">
+                        <span class="card-title" style="color: white; border-bottom: 2px solid #eef9fe">Total sum </span>
+                        <p class="card-text" style="color: white; font-weight: bold">In your client's bank accounts</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 style__table">
+                <div class="card" style="color: #105479">
+                    <div class="card-header">ADMIN TOOLS</div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <div class="list-group">
+                                <a href="#" class="list-group-item list-group-item-action" th:href="@{/manager/all}"><i class="fa-regular fa-person-chalkboard me-2"></i> Managers</a>
+                                <a href="#" class="list-group-item list-group-item-action" th:href="@{/manager/all/clients}"><i class="fa-solid fa-users me-2"></i> Clients</a>
+                                <a href="#" class="list-group-item list-group-item-action" th:href="@{/manager/all/accounts}"><i class="fa-regular fa-credit-card me-2"></i> Accounts</a>
+                                <a href="#" class="list-group-item list-group-item-action" th:href="@{/manager/all/transactions}"><i class="fa-solid fa-clock-rotate-left me-2"></i> Transactions</a>
+                                <a href="#" class="list-group-item list-group-item-action" th:href="@{/manager/global-searching/find/email}"><i class="fa-solid fa-at me-2" ></i> Find manager by email</a>
+                                <a href="#" class="list-group-item list-group-item-action" th:href="@{/manager/global-searching/find/tax}"><i class="fa-solid fa-list-ol me-2"></i> By client's tax number</a>
+                                <a href="#" class="list-group-item list-group-item-action" th:href="@{/manager/global-searching/find/account-number}"><i class="bi bi-123 me-2"></i> By client's account number</a>
+                                <a href="#" class="list-group-item list-group-item-action" th:href="@{/manager/global-searching/find/level}"><i class="fa-solid fa-arrow-turn-up me-2"></i> By manager's level</a>
+                                <a href="#" class="list-group-item list-group-item-action" th:href="@{/manager/all}"><i class="fa-solid fa-file-signature me-2"></i> By manager's name</a>
+                                <a href="#" class="list-group-item list-group-item-action" th:href="@{/manager/global-searching/find/change-manager}"><i class="fa-solid fa-people-arrows me-2"></i> Change manager data</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 right__col">
+                <div class="card border-info mb-3 text-center text-uppercase" style="max-width: 18rem;">
+                    <div class="card-header style__create">Create Client's Account</div>
+                    <div class="card-body">
+                        <span class="card-title">Help client use our perfect service</span>
+                        <p class="card-text"><a href="#" class="btn btn-light style__a" th:href="@{/manager/all/clients}">Register</a></p>
+                    </div>
+                </div>
+                <div class="card border-warning mb-3 text-center text-uppercase" style="max-width: 18rem;">
+                    <div class="card-header style__register">Register New Client</div>
+                    <div class="card-body">
+                        <span class="card-title">Registrate new client to our awesome app</span>
+                        <p class="card-text"><a href="#" class="btn btn-light style__a" th:href="@{/home/registration}">Perform</a></p>
+                    </div>
+                </div>
+                <div class="card border-info mb-3 text-center text-uppercase" style="max-width: 18rem;">
+                    <div class="card-header style__info">My info</div>
+                    <div class="card-body">
+                        <span class="card-title">Check your information</span>
+                        <p class="card-text"><a href="#" class="btn btn-light style__a" th:href="@{/manager/info}">Check</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+</div>
+</body>
+</html>

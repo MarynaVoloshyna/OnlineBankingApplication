@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{main-panel.html}">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/static/css/client-dashboard.css" >
+
+    <title>Manager registration form</title>
+
+<body>
+<div layout:fragment="content3">
+    <div class="col-md-6 offset-3 mt-3 registration__manager">
+        <div th:if="${successRegistered}" class="alert alert-success">
+            <span th:text="${successRegistered}"></span>
+        </div>
+
+        <form class="form-control" method="post" th:action="@{/manager/save}">
+            <span>Manager registration form</span>
+            <div class="mb-3 mt-3">
+                <label for="firstName" class="form-label"> Manager First Name </label>
+                <input id="firstName" type="text" name="firstName" class="form-control"
+                       th:field="${manager.firstName}" required>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="lastName" class="form-label"> Manager Last Name </label>
+                <input id="lastName" type="text" name="lastName" class="form-control"
+                       th:field="${manager.lastName}" required>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="level" class="form-label"> Manager Level </label>
+                <input id="level" type="text" name="level" class="form-control"
+                       th:field="${manager.level}">
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="email" class="form-label"> Email </label>
+                <input id="email" type="email" name="email" class="form-control"
+                       th:field="${manager.user.email}" required>
+                <span th:if="${#fields.hasErrors('manager.user.email')}" th:errors="*{manager.user.email}" style="color: darkred"></span>
+                <span th:if="${not #fields.hasErrors('manager.user.email') or not #strings.contains(manager.user.email,  @environment.getProperty('friendly.bank.domain'))}" style="color: darkred"></span>
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="password" class="form-label"> Password </label>
+                <input id="password" type="password" name="password" class="form-control"
+                       th:field="${manager.user.password}" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Registration</button>
+
+        </form>
+    </div>
+</div>
+</body>
+</html>

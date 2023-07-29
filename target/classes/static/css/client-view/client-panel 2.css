@@ -1,0 +1,71 @@
+
+.h1{
+    text-transform: uppercase;
+    color: #105479;
+}
+.btn-primary{
+    font-size: 1.2rem;
+    padding: 10px;
+    color: #1773a4c7;
+    background: #f4f5f7;
+    border: 1px solid #1773a4;
+    border-radius: 50px;
+    width: 172px;
+    margin-top: 5%;
+    margin-left: 20%;
+    margin-bottom: 5%;
+}
+.btn-light{
+    font-size: 1.2rem;
+    color: #fbfdff;
+    background: #ffbb3280;
+    border-radius: 50px;
+    border: none;
+    padding: 11px;
+    width: 172px;
+    font-weight: 500;
+    margin-left: 20%;
+}
+a{
+    color:#2C6994;
+    text-decoration:none;
+    transition: 0.3s;
+}
+
+a:hover{
+    opacity: 0.9;
+    border-bottom: #105479;
+}
+.nav{
+    background-color: #ffbb32ed;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+ nav{
+    display: none;
+}
+@media screen and (max-width: 1200px){
+    body {
+        background-image: url('/static/image/mobileBG.png');
+        background-repeat:no-repeat;
+        background-size: cover;
+        min-height: 100%;
+    }
+    nav{
+        display: block;
+        background-color: #ffbb32ed;
+        box-shadow: 0px 4px 4px 0px #00000040;
+
+    }
+    .offcanvas{
+        background-image: url('/static/image/mobileBG.png');
+        background-repeat:no-repeat;
+        background-size: cover;
+        min-height: 100%;
+    }
+    nav a{
+        text-transform: uppercase;
+    }
+    .nav {
+        display: none
+    }
+}

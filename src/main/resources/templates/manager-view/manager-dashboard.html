@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{manager-panel.html}">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/manager-dashboard.css" >
+
+    <title>Welcome to FriendlyBank</title>
+</head>
+<body>
+<div layout:fragment="content1">
+    <div class="container-fluid">
+        <h1 class="display-6 text-center text-uppercase" style="color: #105479;">Hi, <span th:text="${manager.getFirstName()}"></span>! </h1>
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="card border-info mb-5 text-center text-uppercase client_card" style="max-width: 18rem;">
+                    <div class="card-header"><span th:text="${manager.getClientList().size()}" ></span></div>
+                    <div class="card-body">
+                        <span class="card-title" style="border-bottom: 2px solid #1773a4;"> Clients </span>
+                        <p class="card-text">In your client list</p>
+                    </div>
+                </div>
+                <div class="card border-warning mb-5 text-center text-uppercase ba_card" style="max-width: 18rem; border-color: white;">
+                    <div class="card-header"> <span th:text="${numberOfBankAccounts}"></span></div>
+                    <div class="card-body">
+                        <span class="card-title" style="border-bottom: 2px solid #1773a4;">Bank accounts</span>
+                        <p class="card-text">has your clients</p>
+                    </div>
+                </div>
+                <div class="card border-info mb-5 text-center text-uppercase sum_card" style="max-width: 18rem; ">
+                    <div class="card-header" style="color: #1773a4"> <span th:text="${totalSumOfAllBankAccounts.intValue()}"></span> UAH </div>
+                    <div class="card-body" style="color: white">
+                        <span class="card-title" style="color: white; border-bottom: 2px solid #eef9fe">Total sum </span>
+                        <p class="card-text" style="color: white; font-weight: bold">In your client's bank accounts</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 style__table">
+                <div class="card">
+                    <div class="card-header">Clients list</div>
+                    <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="text-center text-uppercase">
+                        <tr>
+                            <th  class="style__th">First Name</th>
+                            <th  class="style__th">Last Name</th>
+                            <th  class="style__th">Email</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="text-center" th:each="client:${clients}" >
+                            <td th:text="${client.getFirstName()}"></td>
+                            <td th:text="${client.getLastName()}"></td>
+                            <td th:text="${client.getUser().getEmail()}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+                </div>
+                <a class="btn btn-light style__a" th:href="@{/manager/clients/all}">Check clients</a>
+            </div>
+            <div class="col-sm-3">
+                <div class="card border-info mb-3 text-center text-uppercase" style="max-width: 18rem;">
+                    <div class="card-header style__create">Create Client's Account</div>
+                    <div class="card-body">
+                        <span class="card-title">Help client use our perfect service</span>
+                        <p class="card-text"><a href="#" class="btn btn-light style__a" th:href="@{/manager/clients/all}">Register</a></p>
+                    </div>
+                </div>
+                <div class="card border-warning mb-3 text-center text-uppercase" style="max-width: 18rem;">
+                    <div class="card-header style__register">Register New Client</div>
+                    <div class="card-body">
+                        <span class="card-title">Registrate new client to our awesome app</span>
+                        <p class="card-text"><a href="#" class="btn btn-light style__a" th:href="@{/home/registration}">Perform</a></p>
+                    </div>
+                </div>
+                <div class="card border-info mb-3 text-center text-uppercase" style="max-width: 18rem;">
+                    <div class="card-header style__info">My info</div>
+                    <div class="card-body">
+                        <span class="card-title">Check your information</span>
+                        <p class="card-text"><a href="#" class="btn btn-light style__a" th:href="@{/manager/info}">Check</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+</div>
+</body>
+</html>

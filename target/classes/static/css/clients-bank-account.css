@@ -1,0 +1,68 @@
+html {
+    font-family: "Inter", sans-serif;
+}
+body {
+    background-image: url('/static/image/DesctopBG.png');
+    background-repeat:no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+.h1{
+    text-transform: uppercase;
+}
+.container {
+    margin-top: 1%;
+}
+.btn-light{
+    font-size: 14px;
+    color: #fbfdff;
+    background: #ffbb3280;
+    border-radius: 50px;
+    border: none;
+    padding: 11px;
+    width: 172px;
+    font-weight: 500;
+    margin-left: 20%;
+}
+.btn-primary{
+    font-size: 14px;
+    padding: 10px;
+    color: #1773a4c7;
+    background: #f4f5f7;
+    border: 1px solid #1773a4;
+    border-radius: 50px;
+    width: 172px;
+    margin-top: 5%;
+    margin-left: 20%;
+    margin-bottom: 5%;
+}
+
+@media screen and (max-width: 600px) {
+    .navbar-toggler{
+        border: 1px solid #1773a4;
+    }
+
+
+    tr, td{
+        font-size: small; color: #105479
+    }
+    .card {
+        margin-top: 20%;
+    }
+
+    .btn-light {
+        font-size: 12px;
+        padding: 2px;
+        color: #1773a4c7;
+        background: #eef9fe;
+        border: 1px solid #1773a4;
+        border-radius: 50px;
+        width: 110px;
+        margin-top: 5%;
+        margin-left: 2%;
+        margin-bottom: 5%;
+    }
+    .d-flex{
+        /*justify-content: unset;*/
+    }
+}
