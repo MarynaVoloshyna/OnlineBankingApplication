@@ -72,9 +72,9 @@ a:hover{
     margin-left: 5%;
 
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1200px) {
     body {
-        background-image: url('/static/image/mobileBg1.png');
+        background-image: url('/static/image/mobileBG.png');
         background-repeat: no-repeat;
         background-size: cover;
         min-height: 100%;

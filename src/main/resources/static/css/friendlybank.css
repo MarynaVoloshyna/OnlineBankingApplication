@@ -116,6 +116,14 @@ a:hover{
         font-weight: bold;
         font-family: 'Montserrat', sans-serif;
     }
+    p{
+        text-align: center;
+        text-transform: uppercase;
+        color: #105479;
+        margin-top: 5%;
+        font-weight: bold;
+        font-size: 40px;
+    }
     .buttons{
         display: none;
     }
@@ -132,17 +140,18 @@ a:hover{
     .style__a{
         display: block;
         /*font-size: 12px;*/
-        color: #1773a4;
+        color: #ffffff;
         text-transform: uppercase;
         font-weight: bold;
         /*background-color: #ffbb32ed ;*/
         box-shadow: 0px 1px 4px 0px #00000040;
-        border: 1px solid #8cd8f8;
+        border: none;
         border-radius: 20px;
-        padding: 9px;
-        background-color: rgba(186, 225, 247, 0.45);
+        padding: 7px;
+        background-color: #1773a4;
     }
- .btn:hover{
+
+ .btn-light .style__a:hover{
      background-color: #bae1f7;
      border: 1px solid #1773a4;
      color: #F4CD7E;

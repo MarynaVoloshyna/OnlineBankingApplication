@@ -177,7 +177,8 @@ section {
 }
 
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1200px) {
+
     .navbar {
         display: block;
         background-color: #ffbb32ed;

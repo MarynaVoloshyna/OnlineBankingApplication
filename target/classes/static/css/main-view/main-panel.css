@@ -47,7 +47,7 @@ nav{
     body {
         background-image: url('/static/image/mobileBG.png');
         background-repeat:no-repeat;
-        background-size: cover;
+        background-size: contain;
         min-height: 100%;
     }
     nav{

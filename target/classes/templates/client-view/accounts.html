@@ -4,6 +4,7 @@
       layout:decorate="~{client-panel.html}">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
@@ -18,7 +19,7 @@
 <div layout:fragment="content2">
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-sm-8">
+        <div class="col-sm-12 col-md-8">
     <div class="card">
         <div class="card-header" th:object="${clientName}">
             <span th:text="${clientName}"></span>, here your bank account!
@@ -43,9 +44,9 @@
                 </tbody>
             </table>
 <!--                d-flex justify-content-center-->
-                <div class="">
-            <button type="button" class="btn btn-light"> <a href="#" th:href="@{/transactions/replenishment}">Replenishment</a></button>
-            <button type="button" class="btn btn-light"> <a href="#" th:href="@{/transactions/withdraw}">Make transaction</a> </button>
+                <div class="row justify-content-center">
+            <button type="button" class="btn btn-light"> <a href="#" th:href="@{/transactions/replenishment}">REPLENISHMENT</a></button>
+            <button type="button" class="btn btn-light"> <a href="#" th:href="@{/transactions/withdraw}">TRANSFER</a> </button>
                 </div>
                 </div>
         </div>

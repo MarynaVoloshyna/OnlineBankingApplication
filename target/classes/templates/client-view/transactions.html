@@ -15,59 +15,59 @@
 <body>
 <div layout:fragment="content2">
     <div class="card">
-    <div class="container">
-        <div class="card-header"> All Transactions</div>
+        <div class="container-fluid">
+            <div class="card-header"> All Transactions</div>
 
             <div class="card-body ">
                 <form action="#" method="get" th:action="@{/transactions/all}">
-            <div class="row align-items-center justify-content-center">
-                <div class="col-md-4 input__date">
-                    <label for="startDate">Start Date:</label>
-                    <input type="date" id="startDate" name="startDate" class="form-control" required>
-                </div>
-                <div class="col-md-4 input__date">
-                    <label for="endDate">End Date:</label>
-                    <input type="date" id="endDate" name="endDate" class="form-control" required>
-                </div>
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-md-4 input__date">
+                            <label for="startDate">Start Date:</label>
+                            <input type="date" id="startDate" name="startDate" class="form-control" required>
+                        </div>
+                        <div class="col-md-4 input__date">
+                            <label for="endDate">End Date:</label>
+                            <input type="date" id="endDate" name="endDate" class="form-control" required>
+                        </div>
+                        <div class="col-md-4">
+                            <button type="submit" class="btn btn-outline-light  mt-3 ">Filter</button>
+                        </div>
+                    </div>
+                </form>
             </div>
-                <div class="col-md-4">
-                    <button type="submit" class="btn btn-outline-light  mt-3 ">Filter</button>
-                </div>
 
-        </form>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr class="text-center">
+                        <th>Date</th>
+                        <th>Account From</th>
+                        <th>Account To</th>
+                        <th>Amount</th>
+                        <th>Type</th>
+                        <th>Download link</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Loop through the transactions and display the details -->
+                    <tr th:each="transaction : ${transactions}">
+                        <td th:text="${#temporals.format(transaction.transactionDate, 'HH:mm:ss dd-MM-yyyy ')}"></td>
+                        <td th:text="${transaction.accountFrom.accountNumber}"></td>
+                        <td th:text="${transaction.accountTo != null ? transaction.getAccountTo().getClient().getLastName() : ''}"></td>
+                        <td th:text="${transaction.transactionSum}"></td>
+                        <td th:text="${transaction.transactionType}"></td>
+                        <td class="download__link">
+                            <a th:href="@{/transactions/downloadReceipt(transactionId=${transaction.id})}" class="btn style__a"><i class="bi bi-file-earmark-arrow-down" style="color: #105479"></i></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
-
-         <table class="table table-responsive table-hover">
-                <thead>
-                <tr class="text-center">
-                    <th>Date</th>
-                    <th>Account From</th>
-                    <th>Account To</th>
-                    <th>Amount</th>
-                    <th>Type</th>
-                    <th>Download link</th>
-                </tr>
-                </thead>
-                <tbody>
-                <!-- Loop through the transactions and display the details -->
-                <tr th:each="transaction : ${transactions}">
-                    <td th:text="${#temporals.format(transaction.transactionDate, 'HH:mm:ss dd-MM-yyyy ')}"></td>
-                    <td th:text="${transaction.accountFrom.accountNumber}"></td>
-                    <td th:text="${transaction.accountTo != null ? transaction.getAccountTo().getClient().getLastName() : ''}"></td>
-                    <td th:text="${transaction.transactionSum}"></td>
-                    <td th:text="${transaction.transactionType}"></td>
-                    <td class="download__link">
-                        <a th:href="@{/transactions/downloadReceipt(transactionId=${transaction.id})}" class="btn style__a"><i class="bi bi-file-earmark-arrow-down" style="color: #105479"></i></a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+            <div th:if="${#lists.isEmpty(transactions)}">
+                <p>No transactions found.</p>
+            </div>
         </div>
-        <div th:if="${#lists.isEmpty(transactions)}">
-            <p>No transactions found.</p>
-        </div>
-</div>
-</div>
+    </div>
 </div>
 </body>
 </html>
