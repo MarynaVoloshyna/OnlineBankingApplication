@@ -8,6 +8,7 @@ import com.voloshyna.onlinebankingapplication.service.interf.BankAccountService;
 import com.voloshyna.onlinebankingapplication.service.interf.ClientService;
 import com.voloshyna.onlinebankingapplication.service.interf.TransactionService;
 import com.voloshyna.onlinebankingapplication.service.interf.UserService;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.*;
@@ -99,20 +100,26 @@ public class TransactionController {
                                           @RequestParam("recipientAccountNumber") String recipientAccountNumber,
                                           @RequestParam("amount") Double amount) throws IOException {
         BankAccount senderBankAccount = bankAccountService.findBankAccountByAccountNumber(accountNumber.substring(0,15));
-        BankAccount recipientBankAccount = bankAccountService.findBankAccountByAccountNumber(recipientAccountNumber);
+//        BankAccount recipientBankAccount = bankAccountService.findBankAccountByAccountNumber(recipientAccountNumber);
         if (bindingResult.hasErrors()) {
             return "redirect:/transactions/withdraw";
         }
         try {
+            BankAccount recipientBankAccount = bankAccountService.findBankAccountByAccountNumber(recipientAccountNumber);
+
+//            if (bindingResult.hasErrors()) {
+//                return "redirect:/transactions/withdraw";
+//            }
             transactionService.makeTransaction(senderBankAccount,recipientBankAccount,amount);
             model.addAttribute("accountNumber", accountNumber);
             model.addAttribute("recipientAccountNumber", recipientAccountNumber);
             return "redirect:/transactions/all";
+        } catch (EntityNotFoundException ex) {
+            model.addAttribute("errorMessage", ex.getMessage());
+            return "redirect:/transactions/withdraw?error=" + ex.getMessage(); // Replace "error-page" with the name of your error view
         } catch (IllegalArgumentException ex) {
             model.addAttribute("errorMessage", ex.getMessage());
             return "redirect:/transactions/withdraw?error=" + ex.getMessage();
-
-
         }
     }
     // Transaction list by bank account number

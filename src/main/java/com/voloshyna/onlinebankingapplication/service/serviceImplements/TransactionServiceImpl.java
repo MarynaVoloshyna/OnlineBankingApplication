@@ -108,6 +108,10 @@ public class TransactionServiceImpl implements TransactionService {
         if (accountFrom.getCurrentSum() < amount) {
             throw new IllegalArgumentException("Insufficient balance in the account");
         }
+        // Check if accountTo is not null
+        if (accountTo == null) {
+            throw new IllegalArgumentException("AccountTo not found. Transaction cannot be completed.");
+        }
 
         // Perform the transaction
         Double newFromBalance = accountFrom.getCurrentSum() - amount;

@@ -17,9 +17,7 @@ body{
 a{
     text-transform: uppercase;
 }
-a:hover{
-    border-bottom: 1px solid #eef9fe;
-}
+
 .nav{
     background-color: #ffbb32ed;
     box-shadow: 0px 4px 4px 0px #00000040;
