@@ -41,6 +41,9 @@ public class ClientController {
     @PostMapping("/save")
     public String saveClient(@Valid Client client, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model){
         User user = userService.getUserByEmail(client.getUser().getEmail());
+        if (bindingResult.hasFieldErrors("taxNumber")) {
+            return "client-view/registration";
+        }
         if(user != null){bindingResult.rejectValue("user.email", null,
                 "Account with this email already registered");}
         if(bindingResult.hasErrors()){return "client-view/registration";}
