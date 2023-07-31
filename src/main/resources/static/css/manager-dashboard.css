@@ -143,4 +143,7 @@ a:hover{
     .card-body{
         font-size: 11px;
     }
+   .col-sm-3{
+       display:none;
+   }
 }

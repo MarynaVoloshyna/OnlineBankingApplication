@@ -40,7 +40,7 @@ public class SecurityConfiguration {
                 .and()
                 .authorizeHttpRequests()
 //                .requestMatchers("manager/all").hasRole("ADMIN")
-                .requestMatchers("/", "/home/save","/custom-login", "/register-success","/home/registration", "/static/**", "/home/client-dashboard", "/403", "/manager/registration", "/manager/save", "/login")
+                .requestMatchers("/", "/home/save","/custom-login", "/register-success","/home/registration", "/static/**", "/home/client-dashboard", "/403", "/manager/registration", "/manager/save", "/login", "/contact")
                 .permitAll()
 
                 .and()

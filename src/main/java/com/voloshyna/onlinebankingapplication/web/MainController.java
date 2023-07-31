@@ -11,4 +11,6 @@ public class MainController {
     public String showMainPage(){
         return "main-view/friendlybank";
     }
+    @GetMapping ("/contact")
+    public String showContact(){return "contact";}
 }

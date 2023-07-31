@@ -21,6 +21,10 @@ li a {
     background: none;
     border: none;
 }
+p{
+    font-weight: bold;
+    font-size: medium;
+}
 .welcome__message{
     text-align: center;
     color: #2C6994;

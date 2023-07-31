@@ -70,19 +70,6 @@ public class ManagerController {
 
 
 
-//    @PostMapping("/dashboard")
-//    public String showManagerDashboard(Model model) {
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        String username = authentication.getName();
-//        User user = userService.getUserByEmail(username);
-//        Manager manager = managerService.findByEmail(username);
-//        System.out.println(manager);
-//        model.addAttribute("manager", manager);
-//        model.addAttribute("username", user.getManager().getFirstName());
-//        model.addAttribute("userId", user.getUserId());
-//        return "manager-view/manager-dashboard";
-//    }
-
     //MANAGER INFO
     @GetMapping("/info")
     public String showManagerInfo(Model model) {
