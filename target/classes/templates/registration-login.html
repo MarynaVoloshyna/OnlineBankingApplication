@@ -192,7 +192,33 @@
                                 <input id="email" type="email" name="email" class="form-control" th:field="${client.user.email}" required placeholder="It's not required for real e-mail" style="font-size: 10px;">
                                 <span th:if="${#fields.hasErrors('client.user.email')}" th:errors="*{client.user.email}">User already exist</span>
                                 <span id="emailError" style="color: red; display: none; max-width: 300px; font-size: 10px;">Please, input valid email</span>
+                                <script>
+<!--                                 VALIDATION-->
+function validateEmail() {
+    const emailInput = document.getElementById("email");
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const emailError = document.getElementById("emailError");
 
+    if (!emailPattern.test(emailInput.value)) {
+        emailError.style.display = "block";
+        return false;
+    }
+
+    // Additional check for allowed domains
+    const allowedDomains = ["gmail.com", "yahoo.com", "outlook.com", "example.com", "mail.com", "ukr.net" ]; // інші допустимі домени можна додати
+    const enteredDomain = emailInput.value.split("@")[1].toLowerCase();
+    if (allowedDomains.indexOf(enteredDomain) === -1) {
+        emailError.innerText = "Invalid domain.  Allowed domains:  " + allowedDomains.join(", ");
+        emailError.style.display = "block";
+
+        return false;
+    }
+
+    emailError.style.display = "none";
+    return true;
+
+}
+                                </script>
                             </div>
 
                             <div class="input-block">
@@ -207,6 +233,20 @@
                             </div>
 
                             <script>
+<!--                                VALIDATION-->
+function validatePassword() {
+    const passwordInput = document.getElementById("password");
+    const passwordError = document.getElementById("passwordError");
+    const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}|:"<>?~]).{8,}$/;
+    if (!passwordPattern.test(passwordInput.value)) {
+        passwordError.style.display = "block"; // Показуємо повідомлення про помилку для пароля
+
+        return false;
+    }
+    passwordError.style.display = "none";
+    return true;
+
+}
                                 const passwordInput = document.getElementById("password");
                                 const togglePassword = document.getElementById("togglePassword");
 
@@ -220,7 +260,13 @@
                             </script>
 
                         </fieldset>
-                        <button type="submit" class="btn-signup" style="font-size: 12px">REGISTRATE</button>
+                        <script>
+                            function validateForm() {
+                                return validateEmail() && validatePassword();
+
+                            }
+                        </script>
+                        <button type="submit" class="btn-signup" style="font-size: 12px">REGISTER</button>
                     </form>
 
 
