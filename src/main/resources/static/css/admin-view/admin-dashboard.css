@@ -149,10 +149,10 @@ a:hover{
     .nav {
         display: none
     }
-    .style__table{
-        margin-left: 20vw;
-    }
-    .right__col{
+    /*.style__table{*/
+    /*    margin-left: 20vw;*/
+    /*}*/
+    .right__col, .left__col{
         display: none;
     }
     .ba_card, .sum_card{

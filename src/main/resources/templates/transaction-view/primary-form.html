@@ -16,7 +16,12 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-sm-12 col-md-8">
-            <h1 class="mt-4"> Create Transaction</h1>
+
+            <h1 class="mt-4"> REPLENISHMENT</h1>
+            <div class="alert alert-info">
+                NOTE! You may perform replenishment only once per each bank account. Max sum is
+               1000 UAH and 100 USD/EUR.
+            </div>
     <form th:action="@{/transactions/transfer}" th:object="${transaction}" method="post">
 <!--        <div class="mb-3">-->
             <div class="form-group">

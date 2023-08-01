@@ -20,7 +20,7 @@
     <div class="col-md-4" th:if="${bankAccounts.isEmpty()}">
         <!-- Виводимо повідомлення, якщо список рахунків порожній -->
         <div class="alert alert-info">
-            You don't have an account yet.
+            You don't have an account yet. You may open three accounts, one per each currency - UAH, USD, EUR.
         </div>
     </div>
 
@@ -91,7 +91,7 @@
                     </div>
                 </a>
                 <!-- Add disabled attribute to the anchor tag if the client already has 3 accounts -->
-                <a th:if="${bankAccounts.size() == 3}" title="You have reached the maximum number of accounts" data-bs-toggle="tooltip" data-bs-title="Default tooltip">
+                <a th:if="${bankAccounts.size() == 3}"  title="You have reached the maximum number of accounts" data-bs-toggle="tooltip" data-bs-title="Default tooltip">
                     <div class="card border-info mb-5 text-center text-uppercase " style="pointer-events: none; opacity: 0.5;">
                         <div class="card-header style__create"> <img src="/static/image/accounts.png" alt="" width="50px"></div>
                         <div class="card-body">

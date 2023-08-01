@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/client-view/client-dashboard.css" >
+    <link rel="stylesheet" href="/static/css/clients-bank-account.css" >
+
 
     <title>Welcome to FriendlyBank</title>
 </head>
@@ -14,22 +16,36 @@
 <body>
 <div layout:fragment="content2">
     <div class="container">
-        <div class="row">
-            <div class="col-md-8 mx-auto">
-                <div class="card mb-3">
-                    <div class="card-body p-4" style="border-color: #105479">
-                        <h5 class="card-title mb-4">
-                            <img src="/static/image/manager.png" alt="Manager icon" width="50px" th:value="${manager}">
-                            <span class="ml-2" th:text="${manager.getFirstName()}"></span>
-                        </h5>
-                        <p class="card-text mb-1" th:text="${manager.getLastName()}"></p>
-                        <p class="card-text mb-2" th:text="${manager.getUser().getEmail()}"></p>
-                        <a href="#" class="btn btn-light btn__style" th:href="@{/dashboard}">Home</a>
+        <div class="row justify-content-center">
+            <div class="col-sm-12 col-md-8 mx-auto">
+                <div class="d-flex justify-content-center">
+<!--                <div class="card mb-3">-->
+<!--                    <div class="card-body p-4" style="border-color: #105479">-->
+<!--                        <h5 class="card-title mb-4">-->
+<!--                            <img src="/static/image/manager.png" alt="Manager icon" width="30px" th:value="${manager}">-->
+<!--                            <span class="ml-2" th:text="${manager.getFirstName()}"></span>-->
+<!--                        </h5>-->
+<!--                        <p class="card-text mb-1" th:text="${manager.getLastName()}"></p>-->
+<!--                        <p class="card-text mb-2" th:text="${manager.getUser().getEmail()}"></p>-->
+<!--                        <a href="#" class="btn btn-light btn__style" th:href="@{/dashboard}">Home</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+                <div class="card" style="width: 18rem;" th:value="${manager}">
+                    <div class="card-header">
+                        <img src="/static/image/manager.png" alt="Manager icon" width="30px" > <span style="font-weight: bold; color: #105479;">MANAGER INFO</span>
                     </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><span style="font-weight: bold; color: #105479;">NAME:</span> <span th:text="${manager.getFirstName()}" style=" color: #105479"></span></li>
+                        <li class="list-group-item"><span style="font-weight: bold; color: #105479;">LAST NAME:</span> <span th:text="${manager.getLastName()}" style=" color: #105479"></span></li>
+                        <li class="list-group-item"><span style="font-weight: bold; color: #105479;">EMAIL:</span> <span th:text="${manager.getUser().getEmail()}" style=" color: #105479"></span></li>
+                    </ul>
+                    <a href="#" class="btn btn-light btn__style" th:href="@{/dashboard}">Home</a>
                 </div>
+
             </div>
         </div>
     </div>
+</div>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
