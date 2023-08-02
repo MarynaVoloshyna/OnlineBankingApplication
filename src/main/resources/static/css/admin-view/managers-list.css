@@ -37,6 +37,7 @@ td{
 .style__a{
     font-size: 12px;
     color: #1773a4;
+    width: fit-content;
 }
 form{
     margin-bottom: 20px;
