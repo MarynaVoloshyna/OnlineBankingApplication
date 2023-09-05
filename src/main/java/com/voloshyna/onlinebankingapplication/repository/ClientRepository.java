@@ -14,8 +14,6 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
         @Query("SELECT c FROM Client c JOIN c.accountList a WHERE a.accountNumber LIKE %:keyNumber%")
         Client findClientByAccountNumberContains(@Param("keyNumber") String keyNumber);
 
-//        @Query("SELECT c FROM Client as c WHERE c.firstName like %:name% or c.lastName LIKE %:name% ")
-//        List <Client> findClientByNameContainsIgnoreCase(@Param("name") String name);
         @Query("SELECT c FROM Client c WHERE c.firstName LIKE %:name% OR c.lastName LIKE %:name%")
         List<Client> findClientByNameContainsIgnoreCase(@Param("name") String name);
 

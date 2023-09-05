@@ -2,14 +2,15 @@ package com.voloshyna.onlinebankingapplication.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.time.LocalDate;
 import java.util.List;
-@Getter
-@Setter
+
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
 @Data
+@Entity
+//@Table(name = "bank_accounts")
 public class BankAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,9 +31,7 @@ public class BankAccount {
     private Client client;
 
 
-
-
-    public BankAccount(Client client, Currency currency,Double currentSum, String accountNumber, LocalDate openingDate) {
+    public BankAccount(Client client, Currency currency, Double currentSum, String accountNumber, LocalDate openingDate) {
         this.client = client;
         this.currency = currency;
         this.currentSum = currentSum;

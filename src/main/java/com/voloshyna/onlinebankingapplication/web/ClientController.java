@@ -32,12 +32,14 @@ public class ClientController {
     private final ClientService clientService;
     private final UserService userService;
 
+
+// Registration form
     @GetMapping("/registration")
     public String createClient(Model model){
         model.addAttribute("client", new Client());
         return "registration-login";
     }
-
+// Saving of client with redirecting to log in form
     @PostMapping("/save")
     public String saveClient(@Valid Client client, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model){
         User user = userService.getUserByEmail(client.getUser().getEmail());
@@ -60,7 +62,7 @@ public class ClientController {
     }
 
 
-
+// Show list of bank account
     @GetMapping("/bank-account")
     public String showClientBankAccount(Model model, Authentication authentication){
         String userEmail = authentication.getName();
@@ -70,7 +72,9 @@ public class ClientController {
         model.addAttribute("clientName", client.getFirstName());
         return "client-view/accounts";
     }
-    
+
+
+    // Show client dashboard
     @PostMapping("/dashboard")
     public String showClientDashboard(Model model){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -80,7 +84,7 @@ public class ClientController {
         model.addAttribute("userId", user.getUserId());
         return "client-view/client-dashboard";
     }
-    
+    // Show client info - name, date of registration etc.
     @GetMapping("/client-info")
     public String showClientInfo(Model model, Authentication authentication){
         String userEmail = authentication.getName();
@@ -88,7 +92,8 @@ public class ClientController {
         model.addAttribute("client", clientService.findClientById(clientId));
         return"client-view/client-info";
     }
-   
+
+// Show manager info
     @GetMapping ("/manager-info")
     public String showManagerInfo(Model model, Authentication authentication ){
     String userEmail = authentication.getName();

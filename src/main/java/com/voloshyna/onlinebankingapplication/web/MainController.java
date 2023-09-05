@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/")
 public class MainController {
+    // Show welcome page
     @GetMapping
     public String showMainPage(){
         return "main-view/friendlybank";

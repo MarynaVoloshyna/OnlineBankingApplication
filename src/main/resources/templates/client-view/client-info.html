@@ -18,19 +18,19 @@
             <form class="form-control" th:object="${client}">
                 <div class="mb-3 mt-3">
                     <label class="form-label"> Date of registration</label>
-                    <input type="text" name="dateOfRegistration" class="form-control" th:value="${client.dateOfRegistration}">
+                    <input type="text" name="dateOfRegistration" class="form-control" th:value="${client.dateOfRegistration}" readonly>
                 </div>
                 <div class="mb-3 mt-3">
                     <label class="form-label"> First Name</label>
-                    <input type="text" name="firstName" class="form-control" th:value="${client.getFirstName()}">
+                    <input type="text" name="firstName" class="form-control" th:value="${client.getFirstName()}" readonly>
                 </div>
                 <div class="mb-3 mt-3">
                     <label class="form-label">Last Name</label>
-                    <input type="text" name="lastName" class="form-control" th:value="${client.getLastName()}">
+                    <input type="text" name="lastName" class="form-control" th:value="${client.getLastName()}" readonly>
                 </div>
                 <div class="mb-3 mt-3">
                     <label class="form-label">Email</label>
-                    <input type="text" name="email" class="form-control" th:value="${client.user.getEmail()}">
+                    <input type="text" name="email" class="form-control" th:value="${client.user.getEmail()}" readonly>
                 </div>
                 <div class="mb-3 mt-3">
                     <label class="form-label">Tax Number</label>

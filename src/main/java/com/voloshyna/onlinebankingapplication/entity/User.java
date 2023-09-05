@@ -1,18 +1,12 @@
 package com.voloshyna.onlinebankingapplication.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
+import lombok.*;
 
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-@Data
-@AllArgsConstructor
+
 @NoArgsConstructor
+@AllArgsConstructor
+@Data
 @Entity
 @Table(name = "users")
 public class User {
@@ -23,12 +17,11 @@ public class User {
     private String email;
     @Column(nullable = false)
     private String password;
-    @OneToOne(mappedBy = "user",fetch = FetchType.EAGER)
+    @OneToOne(mappedBy = "user", fetch = FetchType.EAGER)
     private Client client;
     @OneToOne(mappedBy = "user", fetch = FetchType.EAGER)
     private Manager manager;
-   @ManyToOne
-   @Enumerated(value = EnumType.STRING)
+    @ManyToOne
     private Role role;
 
 

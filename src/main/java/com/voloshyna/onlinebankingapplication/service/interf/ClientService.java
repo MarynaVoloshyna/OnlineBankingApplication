@@ -21,7 +21,7 @@ public interface ClientService {
     List<Client> getAllClientsByManagerId(Long managerId);
     List<Client> getAllClientInDataBase();
     List<Client> getClientsByName(String clientName);
-    List<Client> findAllClientsInBank();
+
 
 
 

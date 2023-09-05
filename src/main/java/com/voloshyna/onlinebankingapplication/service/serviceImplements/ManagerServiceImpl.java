@@ -16,11 +16,9 @@ import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+
 import java.util.List;
 @Service
 @Getter
@@ -42,7 +40,7 @@ public class ManagerServiceImpl implements ManagerService {
     @Autowired
     private Environment environment;
 
-
+// Registration of manager in service with setting of his level (role depend on its user email)
     @Override
     public Manager createManager(String firstName, String lastName, String level, String userEmail, String userPassword) {
         String friendlyBankDomain = environment.getProperty("friendly.bank.domain");
@@ -62,15 +60,11 @@ public class ManagerServiceImpl implements ManagerService {
         if (user.getEmail().contains("manager1")) manager.setLevel("JUNIOR");
         if (user.getEmail().contains("manager2")) manager.setLevel("MIDDLE");
         if (user.getEmail().contains("manager3")) manager.setLevel("SENIOR");
-
-
         userRepository.save(user);
         managerRepository.save(manager);
-//        roleRepository.save(adminRole);
-//        roleRepository.save(managerRole);
         return manager;
     }
-
+// Updating manager clients list (for admin role only)
     @Override
     public void setClientToManager(String managerEmail, String clientEmail) {
         Client client = clientRepository.findClientByEmail(clientEmail);
@@ -88,96 +82,79 @@ public class ManagerServiceImpl implements ManagerService {
 
 
     }
-
+// Fetch managers list (for admin role only)
     @Override
     public List<Manager> getAllManager() {
         List<Manager> managers = managerRepository.findAll();
         return managers;
     }
-
+// Finding manager by first or last name (for admin role only)
     @Override
     public List<Manager> searchManager(String keyword) {
         List<Manager> managers = managerRepository.findManagerByName(keyword);
         return managers;
     }
-
+// Finding manager by his email (for admin role only)
     @Override
     public Manager findByEmail(String managerEmail) {
         Manager manager = managerRepository.findManagerByEmail(managerEmail);
         return manager;
     }
-
+// Fetch managers list by closest matches of email (for admin role only)
     @Override
     public List<Manager> findManagersByEmail(String managerEmail) {
         List<Manager> managers = managerRepository.findManagersByEmail(managerEmail);
         return managers;
     }
-
+// Fetch managers list by closest matches of client's tax number (for admin role only)
     @Override
     public List<Manager> findByClientTaxNumber(Long taxNumber) {
         List<Manager> managers = managerRepository.findManagerByClientTaxNumber(taxNumber);
         return managers;
     }
+// Fetch managers list by closest matches of client's bank account number (for admin role only)
 
     @Override
     public List<Manager> findByClientBankAccountNumber(String bankAccountNumber) {
         List<Manager> managers = managerRepository.findManagerByClientAccountNumber(bankAccountNumber);
         return managers;
     }
-
+// Finding manager by ID
     @Override
     public Manager findById(Long managerId) {
         return managerRepository.findById(managerId).orElseThrow(() -> new EntityNotFoundException("Manager not found"));
     }
 
-    @Override
-    public List<Manager> findManagersById(Long managerId) {
-        return managerRepository.findManagersByIdIsContaining(managerId);
-    }
-
+//    @Override
+//    public List<Manager> findManagersById(Long managerId) {
+//        return managerRepository.findManagersByIdIsContaining(managerId);
+//    }
+// Fetch managers list by level (for admin role only)
     @Override
     public List<Manager> findByManagerLevel(String managerLevel) {
         return managerRepository.findManagerByLevelContainsIgnoreCase(managerLevel);
     }
-
+// Fetch all managers (for admin role only)
     @Override
     public List<Manager> findAll() {
         return managerRepository.findAll();
     }
-
-//    @Override
-//    public Manager saveOrUpdateManager(Manager manager) {
-//        //Long managerId = manager.getId(); // Отримуємо ID менеджера
-////        Manager existingManager = managerRepository.findById(manager.getId()).orElseThrow(() -> new EntityNotFoundException("Manager not found")); // Отримуємо існуючого менеджера з бази даних
-////
-////        if (existingManager != null) {
-////            // Оновлюємо поля існуючого менеджера на основі вхідних даних
-////            existingManager.setFirstName(existingManager.getFirstName());
-////            existingManager.setLastName(existingManager.getLastName());
-////            existingManager.setLevel(existingManager.getLevel());
-////
-////            // Зберігаємо оновленого менеджера в базі даних
-//            managerRepository.save(manager);
-//
-//
-//
-//        return manager;
-//    }
+// Updating of manager's data
 @Override
     public Manager saveOrUpdateManager(Long managerId, Manager updatedManager) {
         Manager existingManager = managerRepository.findById(managerId).orElseThrow(() -> new EntityNotFoundException("Manager not found"));
 
-        // Оновлення полів оригінального об'єкта менеджера
+
         existingManager.setFirstName(updatedManager.getFirstName());
         existingManager.setLastName(updatedManager.getLastName());
         existingManager.setLevel(updatedManager.getLevel());
 
-        // Збереження оновленого менеджера у базі даних
+
         Manager savedManager = managerRepository.save(existingManager);
 
         return savedManager;
     }
-
+// Deleting manager
     @Override
     public void deleteManager(Long managerId) {
         Manager manager  = managerRepository.findById(managerId).orElseThrow(() -> new EntityNotFoundException("Manager not found"));

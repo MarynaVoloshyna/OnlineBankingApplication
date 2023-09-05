@@ -20,12 +20,7 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     List<Transaction> findAllByAccountFrom_AccountNumberContains(String accountNumber);
     List<Transaction> findTransactionsByTransactionType(TransactionType transactionType);
     List<Transaction> findTransactionsByTransactionDateBetween(LocalDateTime startDate, LocalDateTime endDate);
-//    @Query("SELECT t FROM Transaction t WHERE (t.transactionDate BETWEEN :startDate AND :endDate) AND (t.accountFrom.client.id = :clientId OR t.accountTo.client.id = :clientId)")
-//    List<Transaction> findTransactionsByTransactionDateBetweenAndClientId(
-//            @Param("startDate") LocalDate startDate,
-//            @Param("endDate") LocalDate endDate,
-//            @Param("clientId") Long clientId
-//    );
+
 @Query("SELECT t FROM Transaction t WHERE (t.transactionDate BETWEEN :startDate AND :endDate) AND (t.accountFrom.client.id = :clientId OR t.accountTo.client.id = :clientId)")
 List<Transaction> findTransactionsByTransactionDateBetweenAndClientId(
         @Param("startDate") LocalDateTime startDate,

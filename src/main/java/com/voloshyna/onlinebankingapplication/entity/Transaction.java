@@ -2,20 +2,16 @@ package com.voloshyna.onlinebankingapplication.entity;
 
 import com.voloshyna.onlinebankingapplication.staticData.TransactionType;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
-@Getter
-@Setter
-@AllArgsConstructor
+
 @NoArgsConstructor
+@AllArgsConstructor
+@Data
 @Entity
+//@Table(name = "transactions")
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,12 +24,10 @@ public class Transaction {
     @JoinColumn(name = "accountTo")
     private BankAccount accountTo;
     private Double transactionSum;
-//    @Temporal(TemporalType.TIMESTAMP)
+
     private LocalDateTime transactionDate;
     @Enumerated(EnumType.STRING)
     private TransactionType transactionType;
-
-
 
 
     public Transaction(BankAccount accountFrom, BankAccount accountTo, Double transactionSum, LocalDateTime transactionDate) {

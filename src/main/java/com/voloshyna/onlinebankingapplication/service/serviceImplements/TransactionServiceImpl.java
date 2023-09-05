@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -30,21 +29,24 @@ public class TransactionServiceImpl implements TransactionService {
     @Value("${spring.maxForeignCurrency}")
     private Double maxForeignCurrency;
 
-
+    /*
+    Perform primary transaction possible only once, when amount equals 0, otherwise transaction is impossible.
+    Max sum of transaction in UAH is 1000, in USD and EUR is 100.
+   */
     @Override
     public Transaction primaryTransaction(String accountNumber, Double amount) {
         BankAccount bankAccount = bankAccountRepository.findBankAccountByAccountNumberContainsIgnoreCase(accountNumber);
         Double currentSum = bankAccount.getCurrentSum();
         Currency currency = bankAccount.getCurrency();
-        if(currentSum > 0){
+        if (currentSum > 0) {
             throw new IllegalArgumentException("You can't make primary transaction. You already has money on your balance. " +
                     "The sum is " + currentSum);
         }
-        if(currency.equals(Currency.UAH) && amount > maxUAH){
+        if (currency.equals(Currency.UAH) && amount > maxUAH) {
             throw new IllegalArgumentException("Max sum of replenishment is 1000 UAH ");
         }
-        if((currency.equals(Currency.USD) || currency.equals(Currency.EUR)) && amount > maxForeignCurrency){
-            throw new IllegalArgumentException("Max sum of replenishment is " +maxForeignCurrency + "  USD or EUR ");
+        if ((currency.equals(Currency.USD) || currency.equals(Currency.EUR)) && amount > maxForeignCurrency) {
+            throw new IllegalArgumentException("Max sum of replenishment is " + maxForeignCurrency + "  USD or EUR ");
         }
 
         Transaction transaction = new Transaction(bankAccount, amount, LocalDateTime.now(), TransactionType.REPLENISHMENT);
@@ -56,46 +58,17 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public Transaction findTransactionById(Long transactionId) {
-        Transaction transaction = transactionRepository.findById(transactionId).orElseThrow(()-> new EntityNotFoundException("Transaction not found"));
+        Transaction transaction = transactionRepository.findById(transactionId).orElseThrow(() -> new EntityNotFoundException("Transaction not found"));
         return transaction;
     }
 
-
-    ////?????????////
-//    @Override
-//    public Transaction makeTransaction(BankAccount senderAccount, BankAccount recipientAccount, Double amount) {
-//        Double senderBalance = senderAccount.getCurrentSum();
-//        Double recipientBalance = recipientAccount.getCurrentSum();
-//
-//        if(senderAccount.getAccountNumber().equals(recipientAccount.getAccountNumber())){
-//            throw new IllegalArgumentException("It's not allowed to send money by yourself :)");
-//        }
-//
-//        if (recipientAccount.equals(null)){
-//            throw new EntityNotFoundException("Account not found");
-//        }
-//
-//        if (senderBalance < amount) {
-//           throw new IllegalArgumentException("Not enough money in your balance");
-//        }
-//
-//        Double newSenderBalance = senderBalance - amount;
-//        senderAccount.setCurrentSum(newSenderBalance);
-//        Transaction transactionWithdraw = new Transaction(senderAccount, amount, new Date(),TransactionType.WITHDRAW);
-//        transactionRepository.save(transactionWithdraw);
-//        bankAccountRepository.save(senderAccount);
-//
-//        Double transactionAmount = calculateTransactionSum(senderAccount,recipientAccount, amount );
-//        recipientAccount.setCurrentSum(recipientBalance + transactionAmount);
-//        Transaction transactionDeposit = new Transaction(recipientAccount, transactionAmount, new Date(), TransactionType.DEPOSIT);
-//        transactionDeposit.setAccountTo(recipientAccount); // Assign recipientAccount to AccountTo field
-//
-//        bankAccountRepository.save(recipientAccount);
-//        transactionRepository.save(transactionDeposit);
-//        return transactionWithdraw;
-//    }
+    /*
+    Perform transaction is possible in case when balance is positive.
+    Make transaction by same card is not allowed.
+    Overdraft is not allowed.
+     */
     public Transaction makeTransaction(BankAccount accountFrom, BankAccount accountTo, Double amount) {
-        if(accountFrom.getAccountNumber().equals(accountTo.getAccountNumber())){
+        if (accountFrom.getAccountNumber().equals(accountTo.getAccountNumber())) {
             throw new IllegalArgumentException("It's not allowed to send money by yourself :)");
         }
 
@@ -117,19 +90,18 @@ public class TransactionServiceImpl implements TransactionService {
         Double newFromBalance = accountFrom.getCurrentSum() - amount;
         accountFrom.setCurrentSum(newFromBalance);
 
-//        Double newToBalance = accountTo.getCurrentSum() + amount;
+        // Double newToBalance = accountTo.getCurrentSum() + amount;
         Double transactionSum = calculateTransactionSum(accountFrom, accountTo, amount);
         Double newToBalance = accountTo.getCurrentSum() + transactionSum;
         accountTo.setCurrentSum(newToBalance);
 
 
-
-        Date transactionDate = new Date();
-        TransactionType transactionType = TransactionType.REPLENISHMENT;
+//        Date transactionDate = new Date();
+//        TransactionType transactionType = TransactionType.REPLENISHMENT;
 
         // Create the transaction objects for both accounts
-        Transaction transactionFrom = new Transaction(accountFrom,amount, LocalDateTime.now(), TransactionType.WITHDRAW, accountTo);
-        Transaction transactionTo = new Transaction(accountTo, transactionSum,  LocalDateTime.now(), TransactionType.DEPOSIT,  accountFrom);
+        Transaction transactionFrom = new Transaction(accountFrom, amount, LocalDateTime.now(), TransactionType.WITHDRAW, accountTo);
+        Transaction transactionTo = new Transaction(accountTo, transactionSum, LocalDateTime.now(), TransactionType.DEPOSIT, accountFrom);
 
         // Set the transactions for the accounts
         accountFrom.getTransactionListFrom().add(transactionFrom);
@@ -141,89 +113,8 @@ public class TransactionServiceImpl implements TransactionService {
 
         return transactionFrom;
     }
-//    @Override
-//    public Transaction makeTransaction(BankAccount senderAccount, BankAccount recipientAccount, Double amount) {
-//        Double senderBalance = senderAccount.getCurrentSum();
-//        Double recipientBalance = recipientAccount.getCurrentSum();
-//
-//        if (senderAccount.getAccountNumber().equals(recipientAccount.getAccountNumber())) {
-//            throw new IllegalArgumentException("It's not allowed to send money to yourself :)");
-//        }
-//
-//        if (recipientAccount == null) {
-//            throw new EntityNotFoundException("Recipient account not found");
-//        }
-//
-//        if (senderBalance < amount) {
-//            throw new IllegalArgumentException("Not enough money in your balance");
-//        }
-//
-//        Double newSenderBalance = senderBalance - amount;
-//        senderAccount.setCurrentSum(newSenderBalance);
-//        Transaction transactionWithdraw = new Transaction(senderAccount, amount, new Date(), TransactionType.WITHDRAW);
-//        transactionRepository.save(transactionWithdraw);
-//        bankAccountRepository.save(senderAccount);
-//
-//        // ...
-//        Double transactionAmount = calculateTransactionSum(senderAccount, recipientAccount, amount);
-//        recipientAccount.setCurrentSum(recipientBalance + transactionAmount);
-//        Transaction transactionDeposit = new Transaction(senderAccount, amount, new Date(), TransactionType.DEPOSIT,  recipientAccount); // Use the correct constructor
-//        transactionDeposit.setAccountTo(recipientAccount); // Assign recipientAccount to AccountTo field
-//
-//        bankAccountRepository.save(recipientAccount);
-//        transactionRepository.save(transactionDeposit);
-//        return transactionWithdraw;
-//// ...
-//
-//    }
 
-
-//    @Override
-//    public Transaction makeTransaction(BankAccount senderAccount, BankAccount recipientAccount, Double amount) {
-//        // Validate inputs
-//        if (senderAccount == null || recipientAccount == null) {
-//            throw new IllegalArgumentException("Invalid sender or recipient account");
-//        }
-//
-//        if (senderAccount.getAccountNumber().equals(recipientAccount.getAccountNumber())) {
-//            throw new IllegalArgumentException("It's not allowed to send money to yourself");
-//        }
-//
-//        if (senderAccount.getCurrentSum() < amount) {
-//            throw new IllegalArgumentException("Not enough money in your balance");
-//        }
-//
-//        // Perform the transaction
-//        Transaction transaction = new Transaction();
-//        transaction.setTransactionDate(new Date());
-//
-//        // Withdrawal
-//        transaction.setAccountFrom(senderAccount);
-//        transaction.setTransactionSum(amount);
-//        transaction.setTransactionType(TransactionType.WITHDRAW);
-//        transactionRepository.save(transaction);
-//
-//        Double newSenderBalance = senderAccount.getCurrentSum() - amount;
-//        senderAccount.setCurrentSum(newSenderBalance);
-//        bankAccountRepository.save(senderAccount);
-//
-//        // Deposit
-//       // transaction.setAccountFrom(null);  // Reset account from
-//        transaction.setAccountTo(recipientAccount);
-//        Double transactionAmount = calculateTransactionSum(senderAccount, recipientAccount, amount);
-//        transaction.setTransactionSum(transactionAmount);
-//        transaction.setTransactionType(TransactionType.DEPOSIT);
-//        transactionRepository.save(transaction);
-//
-//        recipientAccount.setCurrentSum(recipientAccount.getCurrentSum() + transactionAmount);
-//        bankAccountRepository.save(recipientAccount);
-//
-//        return transaction;
-//    }
-
-
-
-
+    // Fetch list of transactions by bank account
     @Override
     public List<Transaction> getAllTransactionByBankAccount(BankAccount bankAccount) {
         String accountNumber = bankAccount.getAccountNumber();
@@ -231,11 +122,13 @@ public class TransactionServiceImpl implements TransactionService {
         return transactions;
 
     }
+// Fetch list of transactions by bank account number
 
     @Override
     public List<Transaction> transactionsHistoryByBankAccountNumber(String bankAccountNumber) {
         return transactionRepository.findAllByAccountFrom_AccountNumberContains(bankAccountNumber);
     }
+// Fetch list of transactions by client ID
 
     @Override
     public List<Transaction> getAllTransactionByClient(Long clientId) {
@@ -243,23 +136,26 @@ public class TransactionServiceImpl implements TransactionService {
         return transactions;
     }
 
+    // Finding transactions list by client ID and transaction sum
     @Override
     public List<Transaction> getTransactionBySum(Long clientId, Double amount) {
         List<Transaction> transactions = getAllTransactionByClient(clientId);
         List<Transaction> transactionsByAmount = new ArrayList<>();
-        for (Transaction transaction: transactions) {
-            if(transaction.getTransactionSum().equals(amount)){
+        for (Transaction transaction : transactions) {
+            if (transaction.getTransactionSum().equals(amount)) {
                 transactionsByAmount.add(transaction);
             }
         }
         return transactionsByAmount;
     }
+    // Fetch list of transactions by client ID and transaction type
+
     @Override
     public List<Transaction> getAllTransactionByTransactionType(Long clientId, TransactionType transactionType) {
         List<Transaction> allTransactionByClient = getAllTransactionByClient(clientId);
         List<Transaction> transactionsByType = new ArrayList<>();
-        for (Transaction transaction: allTransactionByClient) {
-            if(transaction.getTransactionType().equals(transactionType)){
+        for (Transaction transaction : allTransactionByClient) {
+            if (transaction.getTransactionType().equals(transactionType)) {
                 transactionsByType.add(transaction);
             }
         }
@@ -267,49 +163,51 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
 
-
-    @Override
-    public List<Transaction> findTransactionsByTransactionDateBetweenAndClientId(LocalDateTime startDate, LocalDateTime endDate, Long clientId) {
-        List<Transaction> transactions = transactionRepository.findTransactionsByTransactionDateBetweenAndClientId(startDate,endDate, clientId );
-        return transactions;
-    }
+// Fetch list of all transactions (for admin role only)
 
     @Override
     public List<Transaction> findAll() {
         List<Transaction> transactions = transactionRepository.findAll();
         return transactions;
     }
+// Fetch list of transactions by period (for admin role only)
 
     @Override
     public List<Transaction> findTransactionsByPeriod(LocalDateTime startDate, LocalDateTime endDate) {
         return transactionRepository.findTransactionsByTransactionDateBetween(startDate, endDate);
     }
+    // Fetch list of transactions by period using client ID
+
+    @Override
+    public List<Transaction> findTransactionsByTransactionDateBetweenAndClientId(LocalDateTime startDate, LocalDateTime endDate, Long clientId) {
+        List<Transaction> transactions = transactionRepository.findTransactionsByTransactionDateBetweenAndClientId(startDate, endDate, clientId);
+        return transactions;
+    }
+    // Fetch list of transactions by period using bank account number
 
     @Override
     public List<Transaction> findTransactionsByPeriodAndBankAccountId(LocalDateTime startDate, LocalDateTime endDate, Long bankAccountId) {
         return transactionRepository.findTransactionsByTransactionDateBetweenAndAccountId(startDate, endDate, bankAccountId);
     }
 
+
+    // Fetch list of transactions by period using client ID
+    @Override
+    public List<Transaction> getTransactionByPeriod(LocalDateTime startDate, LocalDateTime endDate, Long clientId) {
+        List<Transaction> transactions = transactionRepository.findTransactionsByTransactionDateBetweenAndClientId(startDate, endDate, clientId);
+        return transactions;
+    }
+
+    // Fetch list of transactions by recipient account number
     @Override
     public List<Transaction> findTransactionsByRecipientBankAccountNumber(String bankAccountNumber) {
         return transactionRepository.findTransactionByAccountToContains(bankAccountNumber);
     }
 
-
-    @Override
-    public List<Transaction> getTransactionByPeriod(LocalDateTime startDate, LocalDateTime endDate, Long clientId) {
-         List<Transaction> transactions = transactionRepository.findTransactionsByTransactionDateBetweenAndClientId(startDate, endDate, clientId);
-        return transactions;
-    }
-
-
     //UTIL methods
-    public Currency checkCurrency(BankAccount bankAccount){
-        Currency currency = bankAccount.getCurrency();
-        return currency;
-    }
 
-    public Double calculateTransactionSum(BankAccount senderAccount, BankAccount recipientAccount, Double amount){
+    //Calculation of transaction sum depending on currency of bank account
+    public Double calculateTransactionSum(BankAccount senderAccount, BankAccount recipientAccount, Double amount) {
         Double transactionAmount = 0.0;
 
         Double senderBalance = senderAccount.getCurrentSum();
@@ -317,27 +215,27 @@ public class TransactionServiceImpl implements TransactionService {
 
         Currency senderCurrency = senderAccount.getCurrency();
         Currency recipientCurrency = recipientAccount.getCurrency();
-        if(senderCurrency.equals(recipientCurrency)){
+        if (senderCurrency.equals(recipientCurrency)) {
             transactionAmount = amount;
         }
 
-        if(senderCurrency.equals(Currency.USD) && recipientCurrency.equals(Currency.UAH)){
-            transactionAmount = amount* CurrencyRate.getUSD();
+        if (senderCurrency.equals(Currency.USD) && recipientCurrency.equals(Currency.UAH)) {
+            transactionAmount = amount * CurrencyRate.getUSD();
         }
-        if(senderCurrency.equals(Currency.EUR) && recipientCurrency.equals(Currency.UAH)){
-            transactionAmount = amount* CurrencyRate.getEUR();
+        if (senderCurrency.equals(Currency.EUR) && recipientCurrency.equals(Currency.UAH)) {
+            transactionAmount = amount * CurrencyRate.getEUR();
         }
-        if(senderCurrency.equals(Currency.USD) && recipientCurrency.equals(Currency.EUR)){
-            transactionAmount = amount* CurrencyRate.getCrossRate();
+        if (senderCurrency.equals(Currency.USD) && recipientCurrency.equals(Currency.EUR)) {
+            transactionAmount = amount * CurrencyRate.getCrossRate();
         }
-        if(senderCurrency.equals(Currency.EUR) && recipientCurrency.equals(Currency.USD)){
-            transactionAmount = amount/ CurrencyRate.getCrossRate();
+        if (senderCurrency.equals(Currency.EUR) && recipientCurrency.equals(Currency.USD)) {
+            transactionAmount = amount / CurrencyRate.getCrossRate();
         }
-        if(senderCurrency.equals(Currency.UAH) && recipientCurrency.equals(Currency.USD)){
-            transactionAmount = amount/ CurrencyRate.getUSD();
+        if (senderCurrency.equals(Currency.UAH) && recipientCurrency.equals(Currency.USD)) {
+            transactionAmount = amount / CurrencyRate.getUSD();
         }
-        if(senderCurrency.equals(Currency.UAH) && recipientCurrency.equals(Currency.EUR)){
-            transactionAmount = amount/ CurrencyRate.getEUR();
+        if (senderCurrency.equals(Currency.UAH) && recipientCurrency.equals(Currency.EUR)) {
+            transactionAmount = amount / CurrencyRate.getEUR();
         }
 
         return transactionAmount;

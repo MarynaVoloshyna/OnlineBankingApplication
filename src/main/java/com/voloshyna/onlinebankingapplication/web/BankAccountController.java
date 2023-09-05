@@ -23,18 +23,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/account")
 public class BankAccountController {
 
-   private final BankAccountService bankAccountService;
-   private final UserService userService;
+    private final BankAccountService bankAccountService;
+    private final UserService userService;
+
+    //Form for choose currency and creating bank account
     @GetMapping("/create")
-    public String create(Model model){
+    public String create(Model model) {
         model.addAttribute("bankAccount", new BankAccount());
         return "bankAccount-view/account";
     }
 
 
-    //TODO: get ID from session
+    //Saving of bank account
     @PostMapping("/save")
-    public String save(@Valid BankAccount bankAccount, @RequestParam ("currency") Currency currency, Model model, BindingResult bindingResult, Authentication authentication){
+    public String save(@Valid BankAccount bankAccount, @RequestParam("currency") Currency currency, Model model, BindingResult bindingResult, Authentication authentication) {
 
         String userEmail = authentication.getName();
         User user = userService.getUserByEmail(userEmail);
@@ -48,7 +50,7 @@ public class BankAccountController {
             bankAccountService.createBankAccount(clientId, currency);
             model.addAttribute("successMessage", "Bank account created successfully!");
             return "bankAccount-view/account";
-        }catch (RuntimeException ex){
+        } catch (RuntimeException ex) {
             model.addAttribute("errorMessage", ex.getMessage());
             return "bankAccount-view/account";
 

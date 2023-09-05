@@ -4,12 +4,12 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
-import java.util.Objects;
-@AllArgsConstructor
+
 @NoArgsConstructor
-@Getter
-@Setter
+@AllArgsConstructor
+@Data
 @Entity
+//@Table(name = "managers")
 public class Manager {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

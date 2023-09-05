@@ -36,12 +36,14 @@ public class ManagerController {
     private final Environment environment;
 
 
-    //MANAGER REGISTRATION
+    //Manager registration
     @GetMapping("/registration")
     public String createManager(Model model) {
         model.addAttribute("manager", new Manager());
         return "manager-view/manager-form";
     }
+
+    // Saving manager in DB
     @PostMapping("/save")
     public String saveManager(@Valid Manager manager, BindingResult bindingResult, Model model) {
         User user = userService.getUserByEmail(manager.getUser().getEmail());
@@ -69,8 +71,7 @@ public class ManagerController {
     }
 
 
-
-    //MANAGER INFO
+    //Show manager info
     @GetMapping("/info")
     public String showManagerInfo(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -83,7 +84,7 @@ public class ManagerController {
     }
 
 
-// FETCH ALL CLIENTS
+// Fetch clients list by manager
 
     @GetMapping("/clients/all")
     public String showClientByManager(Model model,
@@ -122,8 +123,7 @@ public class ManagerController {
         return "manager-view/clients";
     }
 
-    // CHECK EACH CLIENTS BANK ACCOUNT (TRANSACTIONS CHECK AVAILABLE)
-//    @RequestMapping(value = "/view-client-accounts", method = {RequestMethod.GET, RequestMethod.POST})
+    //  Check each client's bank account (transactions check available)
     @GetMapping("/view-client-accounts")
     public String viewClientAccounts(@RequestParam("clientId") Long clientId,
                                      Model model,
@@ -139,7 +139,9 @@ public class ManagerController {
         }
     }
 
-    //CHECK TRANSACTIONS BY EACH BANK ACCOUNT WITH DATES FILTERING
+// Check transactions by each bank account with dates filtering.
+
+
     @GetMapping("/view-client-accounts/check-transactions")
     public String checkTransactions(@RequestParam("bankAccountId") Long bankAccountId,
                                     @RequestParam(value = "startDate", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss") LocalDate startDate,
@@ -159,7 +161,8 @@ public class ManagerController {
         return "manager-view/check-transactions";
     }
 
-    // CREATING BANK ACCOUNT FOR CLIENT
+
+    // Creating bank account for client.
     @GetMapping("/client-service/create-account")
     public String showBankAccountForm(@RequestParam("clientId") Long clientId,
                                       Model model) {
@@ -171,7 +174,7 @@ public class ManagerController {
     @PostMapping("/client-service/save-bankAccount")
     public String saveBankAccount(@Valid BankAccount bankAccount,
                                   @RequestParam("currency") Currency currency,
-                                  @RequestParam("clientId") Long  clientId,
+                                  @RequestParam("clientId") Long clientId,
                                   Model model,
                                   BindingResult bindingResult,
                                   HttpSession session) {
@@ -196,8 +199,8 @@ public class ManagerController {
 
     }
 
-                                        // ADMIN METHODS//
-    // FETCH ALL MANAGERS IN BANK
+    /* ADMIN METHODS*/
+    // Fetch all managers in bank.
     @PreAuthorize("hasAuthority('ADMIN')")
     @PostAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/all")
@@ -210,7 +213,7 @@ public class ManagerController {
         return "manager-view/admin-page/all-managers";
     }
 
-    // CHECK CLIENTS BY EACH MANAGER
+    // Check clients by each manager.
     @PreAuthorize("hasAuthority('ADMIN')")
     @PostAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/all/check-clients")
@@ -233,7 +236,7 @@ public class ManagerController {
         return "manager-view/check-clients";
     }
 
-    // FETCH ALL CLIENTS IN BANK (WITH CHANGING MANAGERS AND CHEKING BANK ACCOUNTS FUNCTIONALITIES)
+    // Fetch all clients in bank (with changing managers and checking bank accounts functionalities)
     @PreAuthorize("hasAuthority('ADMIN')")
     @PostAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/all/clients")
@@ -245,7 +248,7 @@ public class ManagerController {
         return "manager-view/admin-page/all-clients";
     }
 
-    // CHANGE CLIENT'S MANAGER
+    // Change client's manager
     @PreAuthorize("hasAuthority('ADMIN')")
     @PostAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/update-client")
@@ -272,7 +275,7 @@ public class ManagerController {
     }
 
 
-    // FETCH ALL BANK ACCOUNTS IN BANK (WITH CHEKING TRANSACTIONS BY EACH BANK ACCOUNT)
+    //  Fetch all bank accounts in bank (with checking transactions by each bank account)
     @PreAuthorize("hasAuthority('ADMIN')")
     @PostAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/all/accounts")
@@ -283,7 +286,8 @@ public class ManagerController {
         model.addAttribute("keyword", keyword);
         return "manager-view/admin-page/all-bankaccounts";
     }
-    // FETCH ALL TRANSACTIONS FOR ALL BANK ACCOUNTS. FILTERING BY DATE AND BANK ACCOUNT NUMBER - BOTH OR SEPARATELY (WITH ABILITY DOWNLOAD RECEIPT)
+
+    //Fetch all transactions for all bank accounts. Filtering by date and bank account number - both or separately (with ability to download receipt).
     @PreAuthorize("hasAuthority('ADMIN')")
     @PostAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/all/transactions")
@@ -322,14 +326,8 @@ public class ManagerController {
         return "manager-view/admin-page/all-transactions";
     }
 
-//    @PreAuthorize("hasAuthority('ADMIN')")
-//    @GetMapping("/global-searching")
-//    public String searchingInManagerInfo() {
-//        return "manager-view/searching-page";
-//    }
 
-
-    // SEARCH MANAGER BY EMAIL
+    // Search manager by email
     @PreAuthorize("hasAuthority('ADMIN')")
     @PostAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/global-searching/find/email")
@@ -340,7 +338,8 @@ public class ManagerController {
         model.addAttribute("email", email);
         return "manager-view/admin-page/global-mail";
     }
-    // SEARCH MANAGER BY CLIENT'S TAX NUMBER
+
+    //  Search manager by client's tax number
     @PreAuthorize("hasAuthority('ADMIN')")
     @PostAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/global-searching/find/tax")
@@ -350,7 +349,8 @@ public class ManagerController {
         model.addAttribute("taxNumber", taxNumber);
         return "manager-view/admin-page/global-tax";
     }
-    // SEARCH MANAGER BY CLIENT'S BANK ACCOUNT NUMBER
+
+    //  Search manager by client's bank account number
     @PreAuthorize("hasAuthority('ADMIN')")
     @PostAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/global-searching/find/account-number")
@@ -360,7 +360,8 @@ public class ManagerController {
         model.addAttribute("bankAccountNumber", bankAccountNumber);
         return "manager-view/admin-page/global-accountnumber";
     }
-    // SEARCH MANAGER BY MANAGER'S LEVEL
+
+    // Search manager by manager's level
     @PreAuthorize("hasAuthority('ADMIN')")
     @PostAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/global-searching/find/level")
@@ -370,7 +371,8 @@ public class ManagerController {
         model.addAttribute("level", level);
         return "manager-view/admin-page/global-level";
     }
-    // UPDATING MANAGER'S INFO (EXCEPT OF ID NUMBER)
+
+    // Updating manager's info (except for ID number)
     @PreAuthorize("hasAuthority('ADMIN')")
     @PostAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/global-searching/find/change-manager")
@@ -384,6 +386,7 @@ public class ManagerController {
         return "manager-view/admin-page/global-change";
     }
 
+    // Updating manager's level
     @PreAuthorize("hasAuthority('ADMIN')")
     @PostAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/change-manager/level")

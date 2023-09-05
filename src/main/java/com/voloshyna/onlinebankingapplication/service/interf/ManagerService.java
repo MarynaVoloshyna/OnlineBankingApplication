@@ -15,7 +15,7 @@ public interface ManagerService {
     List<Manager> findByClientTaxNumber(Long taxNumber);
     List<Manager> findByClientBankAccountNumber(String bankAccountNumber);
     Manager findById(Long managerId);
-    List<Manager> findManagersById(Long managerId);
+//    List<Manager> findManagersById(Long managerId);
     List<Manager> findByManagerLevel(String managerLevel);
     List<Manager> findAll();
     Manager saveOrUpdateManager(Long managerId, Manager manager);

@@ -22,7 +22,7 @@ public interface ManagerRepository extends JpaRepository<Manager, Long> {
     List <Manager> findManagerByName(@Param("keyword") String keyword);
     @Query("SELECT m FROM Manager m JOIN m.clientList c WHERE CAST (c.taxNumber AS string) LIKE %:clientTaxNumber%")
     List <Manager> findManagerByClientTaxNumber(@Param("clientTaxNumber") Long clientTaxNumber);
-    List<Manager> findManagersByIdIsContaining(Long managerId);
+//    List<Manager> findManagersByIdIsContaining(Long managerId);
 
 
 

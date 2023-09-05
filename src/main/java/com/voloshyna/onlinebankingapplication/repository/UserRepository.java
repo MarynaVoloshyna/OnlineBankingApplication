@@ -10,7 +10,7 @@ import java.util.Set;
 
 public interface UserRepository extends JpaRepository<User, Long> {
     User findUserByEmail(String email);
-    //List<User> findUserByRoles(Set<Role> roles);
+
     @EntityGraph(attributePaths = {"roles"})
     List<User> findAll();
     List<User> findUserByRole(Role role);

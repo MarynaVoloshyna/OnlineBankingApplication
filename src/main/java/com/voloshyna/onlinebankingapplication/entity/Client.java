@@ -1,24 +1,18 @@
 package com.voloshyna.onlinebankingapplication.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Digits;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Objects;
-@Getter
-@Setter
-@AllArgsConstructor
+
+
 @NoArgsConstructor
+@AllArgsConstructor
+@Data
 @Entity
+//@Table(name = "clients")
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,16 +53,4 @@ public class Client {
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Client client = (Client) o;
-        return id.equals(client.id) && Objects.equals(firstName, client.firstName) && Objects.equals(lastName, client.lastName) && Objects.equals(dateOfRegistration, client.dateOfRegistration) && Objects.equals(taxNumber, client.taxNumber) && Objects.equals(user, client.user) && Objects.equals(accountList, client.accountList) && Objects.equals(manager, client.manager);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, firstName, lastName, dateOfRegistration, taxNumber, user, accountList, manager);
-    }
 }
