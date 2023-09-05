@@ -119,16 +119,13 @@ public class ManagerServiceImpl implements ManagerService {
         List<Manager> managers = managerRepository.findManagerByClientAccountNumber(bankAccountNumber);
         return managers;
     }
-// Finding manager by ID
+// Finding manager by ID (for admin role only)
     @Override
     public Manager findById(Long managerId) {
         return managerRepository.findById(managerId).orElseThrow(() -> new EntityNotFoundException("Manager not found"));
     }
 
-//    @Override
-//    public List<Manager> findManagersById(Long managerId) {
-//        return managerRepository.findManagersByIdIsContaining(managerId);
-//    }
+
 // Fetch managers list by level (for admin role only)
     @Override
     public List<Manager> findByManagerLevel(String managerLevel) {
@@ -139,7 +136,7 @@ public class ManagerServiceImpl implements ManagerService {
     public List<Manager> findAll() {
         return managerRepository.findAll();
     }
-// Updating of manager's data
+// Updating of manager's data (for admin role only)
 @Override
     public Manager saveOrUpdateManager(Long managerId, Manager updatedManager) {
         Manager existingManager = managerRepository.findById(managerId).orElseThrow(() -> new EntityNotFoundException("Manager not found"));
