@@ -10,13 +10,20 @@ Welcome to the Online Banking Application, a simple yet powerful web application
 
 - **User Registration**: New users can register their accounts by providing their email and password. A user role is assigned during registration using email address verification. A domain must be defined to be registered as a manager. Passwords are securely hashed before storage.
 
+                                                                    **Manager registration form**
+  <img width="1369" alt="Снимок экрана 2023-09-05 в 19 17 34" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/d0fc72d6-55bc-430f-9ee2-236c1cb3c284">
+
 - **Bank Account Management**: Clients can create, view and update, their bank accounts. Each client is allowed to have one bank account per currency (UAH, USD, EUR).
+                                                                      **Client dashboard view**
+ 
+<img width="1435" alt="Снимок экрана 2023-09-05 в 17 25 14" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/66119e07-7611-44cd-9777-a3de9962894e">
+
 
 - **Transaction History**: Users can view their transaction history, filter transactions by date, and download transaction receipts.
 
 - **Manager Actions**: Managers can oversee and manage client accounts. They can assign or reassign clients to different managers.
 - **Admin Actions**: Admin has super power and can operate managers, edit their info, change manager's clients list and manager level. Also create new clients and open bank accounts for them. Of course admin can check all info about all bank accounts and transactions.
-  Admin dashboard view
+                                                                      **Admin dashboard view**
   <img width="1439" alt="Снимок экрана 2023-09-05 в 14 56 08" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/a76f74f4-c94d-474f-95e9-024de70ffda3">
 
 
