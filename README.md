@@ -9,8 +9,8 @@ Welcome to the Online Banking Application, a simple yet powerful web application
   Managers have administrative privileges, while Clients can manage their bank accounts and check their transactions with ability to get transaction receipt.
 
 - **User Registration**: New users can register their accounts by providing their email and password. A user role is assigned during registration using email address verification. A domain must be defined to be registered as a manager. Passwords are securely hashed before storage.
-
                                                                     **Manager registration form**
+  
   <img width="1369" alt="Снимок экрана 2023-09-05 в 19 17 34" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/d0fc72d6-55bc-430f-9ee2-236c1cb3c284">
 
 - **Bank Account Management**: Clients can create, view and update, their bank accounts. Each client is allowed to have one bank account per currency (UAH, USD, EUR).
