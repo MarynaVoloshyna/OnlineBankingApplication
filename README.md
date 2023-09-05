@@ -4,15 +4,21 @@ Welcome to the Online Banking Application, a simple yet powerful web application
 
 ## Features
 
-- **Role-Based Access Control**: The application distinguishes between two main roles: Managers and Clients. Managers have administrative privileges, while Clients can manage their bank accounts.
+- **Role-Based Access Control**: The application distinguishes between three main roles: Admin, Managers and Clients.
+  Admin has super power and can operate managers, create new clients and open bank accounts for them as well as check all info about bank accounts and transactions.
+  Managers have administrative privileges, while Clients can manage their bank accounts and check their transactions with ability to get transaction receipt.
 
-- **User Registration**: New users can register their accounts by providing their email and password. Passwords are securely hashed before storage.
+- **User Registration**: New users can register their accounts by providing their email and password. A user role is assigned during registration using email address verification. A domain must be defined to be registered as a manager. Passwords are securely hashed before storage.
 
-- **Bank Account Management**: Clients can create, view, update, and delete their bank accounts. Each client is allowed to have one bank account per currency (UAH, USD, EUR).
+- **Bank Account Management**: Clients can create, view and update, their bank accounts. Each client is allowed to have one bank account per currency (UAH, USD, EUR).
 
 - **Transaction History**: Users can view their transaction history, filter transactions by date, and download transaction receipts.
 
 - **Manager Actions**: Managers can oversee and manage client accounts. They can assign or reassign clients to different managers.
+- **Admin Actions**: Admin has super power and can operate managers, edit their info, change manager's clients list and manager level. Also create new clients and open bank accounts for them. Of course admin can check all info about all bank accounts and transactions.
+  Admin dashboard view
+  <img width="1439" alt="Снимок экрана 2023-09-05 в 14 56 08" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/a76f74f4-c94d-474f-95e9-024de70ffda3">
+
 
 ## Technologies Used
 
