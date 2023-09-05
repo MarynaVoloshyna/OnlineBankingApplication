@@ -96,9 +96,6 @@ public class TransactionServiceImpl implements TransactionService {
         accountTo.setCurrentSum(newToBalance);
 
 
-//        Date transactionDate = new Date();
-//        TransactionType transactionType = TransactionType.REPLENISHMENT;
-
         // Create the transaction objects for both accounts
         Transaction transactionFrom = new Transaction(accountFrom, amount, LocalDateTime.now(), TransactionType.WITHDRAW, accountTo);
         Transaction transactionTo = new Transaction(accountTo, transactionSum, LocalDateTime.now(), TransactionType.DEPOSIT, accountFrom);
