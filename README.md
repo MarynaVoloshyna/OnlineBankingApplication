@@ -13,6 +13,8 @@ Welcome to the Online Banking Application, a simple yet powerful web application
                                                                     **Manager registration form**
   
   <img width="1369" alt="Снимок экрана 2023-09-05 в 19 17 34" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/d0fc72d6-55bc-430f-9ee2-236c1cb3c284">
+**Client registration**
+https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/718a010e-afe7-42a8-b4b9-75035f5a5f34
 
 - **Bank Account Management**: Clients can create, view and update, their bank accounts. Each client is allowed to have one bank account per currency (UAH, USD, EUR).
                                                                       **Client dashboard view**
