@@ -36,6 +36,9 @@ Welcome to the Online Banking Application, a simple yet powerful web application
 - **Hibernate**: An ORM framework for seamless database operations.
 
 - **MySQL Database**: Stores user data, account details, and transaction records.
+  
+- **Thymeleaf**: A server-side Java templating engine for dynamic web content generation.
+
 
 ## Getting Started
 
