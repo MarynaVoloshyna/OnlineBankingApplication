@@ -70,22 +70,7 @@ public class ClientController {
         model.addAttribute("clientName", client.getFirstName());
         return "client-view/accounts";
     }
-    @PostMapping("/custom-login")
-    public String login(@RequestParam("email") String email, @RequestParam("password") String password, Model model) {
-
-        User user = userService.getUserByEmail(email);
-
-        if (user == null || !user.getPassword().equals(password)) {
-            // Неверный email или пароль, выполните необходимую логику (например, отобразите сообщение об ошибке в модели)
-            model.addAttribute("error", "Invalid email or password");
-            return "redirect:/"; // Вернуть имя представления для отображения
-        }
-
-        // Аутентификация прошла успешно, выполните необходимую логику (например, сохраните информацию о текущем пользователе в сессии)
-
-        return "redirect:/home/dashboard"; // Перенаправление пользователя на страницу успешного входа или другую страницу
-
-    }
+    
     @PostMapping("/dashboard")
     public String showClientDashboard(Model model){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -95,6 +80,7 @@ public class ClientController {
         model.addAttribute("userId", user.getUserId());
         return "client-view/client-dashboard";
     }
+    
     @GetMapping("/client-info")
     public String showClientInfo(Model model, Authentication authentication){
         String userEmail = authentication.getName();
@@ -102,17 +88,7 @@ public class ClientController {
         model.addAttribute("client", clientService.findClientById(clientId));
         return"client-view/client-info";
     }
-    @PostMapping("/save-updating")
-    public String saveUpdating(Client client, Authentication authentication, Model model){
-        String userEmail = authentication.getName();
-        User user = userService.getUserByEmail(userEmail);
-        model.addAttribute("user", user);
-//       Long taxNumber =  client.getTaxNumber();
-//       client.setTaxNumber(taxNumber);
-        clientService.updateClient(client);
-        return "redirect:/client-info";
-    }
-
+   
     @GetMapping ("/manager-info")
     public String showManagerInfo(Model model, Authentication authentication ){
     String userEmail = authentication.getName();
