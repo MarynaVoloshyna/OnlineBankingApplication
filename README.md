@@ -1,6 +1,7 @@
 # Online Banking Application
 
-Welcome to the Online Banking Application, a simple yet powerful web application that enables users to manage their bank accounts and transactions securely. This application is built using Java technologies and follows a role-based access control system for different types of users.
+Welcome to the Online Banking Application, a simple yet powerful web application that enables users to manage their bank accounts and transactions securely. This application is built using Java technologies and incorporates Thymeleaf as the templating engine for the user interface. It follows a role-based access control system for different types of users and features a responsive design to ensure a seamless experience on various screen sizes and devices.
+
 
 ## Features
 
@@ -38,6 +39,8 @@ Welcome to the Online Banking Application, a simple yet powerful web application
 - **MySQL Database**: Stores user data, account details, and transaction records.
   
 - **Thymeleaf**: A server-side Java templating engine for dynamic web content generation.
+  
+- **Bootstrap**: A responsive front-end framework for designing web pages with HTML, CSS, and JavaScript.
 
 
 ## Getting Started
