@@ -33,6 +33,9 @@ https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/718
 **Change manager's data (except of ID number)**
 ![changeManagerData](https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/b2c29c0e-a618-4bad-b131-89031f3131f1)
 
+**Filtering transactions**
+![adminFilteringTransactions](https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/fa9e3a6d-e56f-40a5-8a66-5d6d79e54393)
+
 ## Technologies Used
 
 - **Spring Boot**: A powerful framework for building Java-based web applications.
