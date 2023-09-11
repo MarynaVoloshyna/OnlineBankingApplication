@@ -56,4 +56,3 @@ https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/718
    git clone https://github.com/MarynaVoloshyna/OnlineBankingApplication.git
    cd OnlineBankingApplication
 
-![zapis-ekrana-2023-09-11-v-144225_IxmEW7jc](https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/ed882f6e-0a60-4e80-a6f4-319870a57b8c)
