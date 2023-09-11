@@ -48,14 +48,21 @@ Welcome to the "Friendly Bank"  - fullstack online banking application, a simple
 ![2](https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/93d1ecde-3083-4656-a9a2-8d96060756ea)
 ![3](https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/4b1523b4-4d15-4ee1-913b-003718fdea72)
 
+- Desctop full screen
+  <img width="1435" alt="Снимок экрана 2023-09-05 в 17 25 14" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/66119e07-7611-44cd-9777-a3de9962894e">
+
+
+**Replenishment process**
+![3031B9FB-9E52-4DA6-BFA4-3207C02861CD](https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/701092c5-930a-4976-a314-fac3322c69f3)
+
   <img width="1369" alt="Снимок экрана 2023-09-05 в 19 17 34" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/d0fc72d6-55bc-430f-9ee2-236c1cb3c284">
 **Client registration process**
 https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/718a010e-afe7-42a8-b4b9-75035f5a5f34
 
 - **Bank Account Management**: Clients can create, view and update, their bank accounts. Each client is allowed to have one bank account per currency (UAH, USD, EUR).
-                                                                      **Client dashboard view**
+                                                                      
  
-<img width="1435" alt="Снимок экрана 2023-09-05 в 17 25 14" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/66119e07-7611-44cd-9777-a3de9962894e">
+
 
 
 
@@ -68,7 +75,7 @@ https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/718
 **Filtering transactions**
 ![adminFilteringTransactions](https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/fa9e3a6d-e56f-40a5-8a66-5d6d79e54393)
 
-![3031B9FB-9E52-4DA6-BFA4-3207C02861CD](https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/701092c5-930a-4976-a314-fac3322c69f3)
+
 
 ## Technologies Used
 
