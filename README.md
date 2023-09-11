@@ -12,7 +12,7 @@ Welcome to the Online Banking Application, a simple yet powerful web application
 ## Client functionality:
 1. **Create an account**: A manager is assigned automatically upon client registration. The admin can manually change the manager for the client.
 2. **Open accounts in three currencies**: Limitation - only 3 accounts for each client, one for each currency.
-3. **One-time top-up of accounts**: The limit is no more than 1,000 UAH and 100 USD/EUR for foreign currency accounts. This setting may be changed in the `application.properties` file.
+3. **Ones replenishment of accounts**: The limit is no more than 1,000 UAH and 100 USD/EUR for foreign currency accounts. This setting may be changed in the `application.properties` file.
 4. **Transactions**: Transfer from any of your own to any bank card. Overdraft is prohibited, prevention of doubling the balance (attempt to withdraw and transfer money from the same card).
 5. **Checking your information entered during registration**
 6. **Manager contacts**
