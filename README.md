@@ -17,7 +17,7 @@ Welcome to the "Friendly Bank"  - fullstack online banking application, a simple
 5. **Checking your information entered during registration**
 6. **Manager contacts**
 
-## Functionality of the manager:
+## Manager functionality:
 1. **Account registration with email domain verification**: Unable to register if the domain is not "@friendlybank.com."
 2. **Check customers, their accounts, transactions**
 3. **Download the transaction receipt**
@@ -40,6 +40,13 @@ Welcome to the "Friendly Bank"  - fullstack online banking application, a simple
    - Change of manager data.
 3. **Left part**: The left part is the same as the manager's - the ability to create a client account, bank account, and check self-information.
 
+## Client view
+
+**Client registration process**
+- Mobile screen
+![1](https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/c34f7026-301b-4bdd-a9d8-8b0aca9909fd)
+![2](https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/93d1ecde-3083-4656-a9a2-8d96060756ea)
+![3](https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/4b1523b4-4d15-4ee1-913b-003718fdea72)
 
   <img width="1369" alt="Снимок экрана 2023-09-05 в 19 17 34" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/d0fc72d6-55bc-430f-9ee2-236c1cb3c284">
 **Client registration process**
