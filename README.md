@@ -58,6 +58,12 @@ Welcome to the "Friendly Bank"  - fullstack online banking application, a simple
 
 ![3031B9FB-9E52-4DA6-BFA4-3207C02861CD](https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/701092c5-930a-4976-a314-fac3322c69f3)
 
+
+**Transfer money process**
+
+![4](https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/ca093f6b-4a98-4b47-9cd0-f3d07a50dfbf)
+
+
   <img width="1369" alt="Снимок экрана 2023-09-05 в 19 17 34" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/d0fc72d6-55bc-430f-9ee2-236c1cb3c284">
 **Client registration process**
 https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/718a010e-afe7-42a8-b4b9-75035f5a5f34
