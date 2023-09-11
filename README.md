@@ -61,6 +61,8 @@ https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/718
 **Filtering transactions**
 ![adminFilteringTransactions](https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/fa9e3a6d-e56f-40a5-8a66-5d6d79e54393)
 
+![3031B9FB-9E52-4DA6-BFA4-3207C02861CD](https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/701092c5-930a-4976-a314-fac3322c69f3)
+
 ## Technologies Used
 
 - **Spring Boot**: A powerful framework for building Java-based web applications.
