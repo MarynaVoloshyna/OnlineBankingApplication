@@ -24,6 +24,7 @@ Welcome to the Online Banking Application, a simple yet powerful web application
 4. **Create a client**
 5. **Create a client account with a check for a limit of 3 accounts for each client**
 6. **Each manager can have no more than 10 clients. This number can be changed in the `application.properties` file**
+7. **Manager does not have access to admin tools**
 
 ## Admin functionality:
 1. **Basic statistics**: The left part of the dashboard displays basic statistics - how many users are in the application, how many bank accounts are open, and how much money is in all user accounts at the UAH rate.
