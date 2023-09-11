@@ -1,6 +1,6 @@
 # Online Banking Application
 
-Welcome to the Online Banking Application, a simple yet powerful web application that enables users to manage their bank accounts and transactions securely. This application is built using Java technologies and incorporates Thymeleaf as the templating engine for the user interface. It follows a role-based access control system for different types of users and features a responsive design to ensure a seamless experience on various screen sizes and devices.
+Welcome to the "Friendly Bank"  - fullstack online banking application, a simple yet powerful web application that enables users to manage their bank accounts and transactions securely. This application is built using Java technologies and incorporates Thymeleaf as the templating engine for the user interface. It follows a role-based access control system for different types of users and features a responsive design to ensure a seamless experience on various screen sizes and devices.
 
 
 ## Features
