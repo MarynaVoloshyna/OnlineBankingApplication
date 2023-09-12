@@ -167,10 +167,13 @@ Below are screenshots of the application in action on the Heroku website, but I 
 - **Hibernate**: An ORM framework for seamless database operations.
 
 - **MySQL Database**: Stores user data, account details, and transaction records.
+
+- **Maven**: A build tool for managing project dependencies and building Java-based applications.
   
 - **Thymeleaf**: A server-side Java templating engine for dynamic web content generation.
   
 - **Bootstrap**: A responsive front-end framework for designing web pages with HTML, CSS, and JavaScript.
+
 
 
 
