@@ -9,7 +9,7 @@ Welcome to the "Friendly Bank"  - fullstack online banking application, a simple
   Admin has super power and can operate managers, create new clients and open bank accounts for them as well as check all info about bank accounts and transactions.
   Managers have administrative privileges, while Clients can manage their bank accounts and check their transactions with ability to get transaction receipt.
 
-## Client functionality:
+## Client-role user functionality:
 1. **Create an account**: A manager is assigned automatically upon client registration. The admin can manually change the manager for the client.
 2. **Open accounts in three currencies**: Limitation - only 3 accounts for each client, one for each currency.
 3. **Ones replenishment of accounts**: The limit is no more than 1,000 UAH and 100 USD/EUR for foreign currency accounts. This setting may be changed in the `application.properties` file.
@@ -17,7 +17,7 @@ Welcome to the "Friendly Bank"  - fullstack online banking application, a simple
 5. **Checking your information entered during registration**
 6. **Manager contacts**
 
-## Manager functionality:
+## Manager-role user functionality:
 1. **Account registration with email domain verification**: Unable to register if the domain is not "@friendlybank.com."
 2. **Check customers, their accounts, transactions**
 3. **Download the transaction receipt**
@@ -26,7 +26,7 @@ Welcome to the "Friendly Bank"  - fullstack online banking application, a simple
 6. **Each manager can have no more than 10 clients. This number can be changed in the `application.properties` file**
 7. **Manager does not have access to admin tools**
 
-## Admin functionality:
+## Admin-role user functionality:
 1. **Basic statistics**: The left part of the dashboard displays basic statistics - how many users are in the application, how many bank accounts are open, and how much money is in all user accounts at the UAH rate.
 2. **Admin tools**: The central part displays admin tools:
    - View all managers and their information, as well as view the list of clients of each manager. Ability to search by manager's name.
