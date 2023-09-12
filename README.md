@@ -40,6 +40,23 @@ Welcome to the "Friendly Bank"  - fullstack online banking application, a simple
    - Change of manager data.
 3. **Left part**: The left part is the same as the manager's - the ability to create a client account, bank account, and check self-information.
 
+
+##
+Below are screenshots of the application in action on the Heroku website, but I suggest you log in yourself and try using it. You can explore various features of the application, open accounts, conduct transactions, and more. You can also try out the roles of an admin and a manager.
+
+
+ For access to the application on the Heroku service, please use the following credentials:
+   - Admin:
+     - Login: admin@friendlybank.com
+     - Password: admin
+   - Manager:
+     - Login: max@friendlybank.com
+     - Password: max
+   - Client:
+     - We recommend registering yourself to understand how easy and user-friendly the application is.
+     - IMPORTANT: It is not necessary to use a real email address, but it should pass the domain check (specify domains). Please also          make up your tax identification number, which should consist of 8 digits.
+
+
 ## Client view
 
 **Client registration process**
@@ -68,12 +85,24 @@ Welcome to the "Friendly Bank"  - fullstack online banking application, a simple
 
 ![35108D2C-13FC-4BC0-81D9-9AC2FF739346](https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/8a0d3679-d519-4e8b-9f8e-2c2f36158efa)
 
+## Manager view
+**CManager's email verification**
+**Manager dashboard**
+**Access denied page**
+
+## Admin view
+
+**Change manager's data (except of ID number)**
+
+![changeManagerData](https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/b2c29c0e-a618-4bad-b131-89031f3131f1)
+
+**Filtering transactions**
+
+![adminFilteringTransactions](https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/fa9e3a6d-e56f-40a5-8a66-5d6d79e54393)
 
   <img width="1369" alt="Снимок экрана 2023-09-05 в 19 17 34" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/d0fc72d6-55bc-430f-9ee2-236c1cb3c284">
-**Client registration process**
-https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/718a010e-afe7-42a8-b4b9-75035f5a5f34
 
-- **Bank Account Management**: Clients can create, view and update, their bank accounts. Each client is allowed to have one bank account per currency (UAH, USD, EUR).
+
                                                                       
  
 
@@ -83,11 +112,7 @@ https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/718
   <img width="1439" alt="Снимок экрана 2023-09-05 в 14 56 08" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/a76f74f4-c94d-474f-95e9-024de70ffda3">
 
   ![Sept-11-2023 11-08-17](https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/6ae7bad2-ea1e-42dc-8260-7f811c1f8133)
-**Change manager's data (except of ID number)**
-![changeManagerData](https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/b2c29c0e-a618-4bad-b131-89031f3131f1)
 
-**Filtering transactions**
-![adminFilteringTransactions](https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/fa9e3a6d-e56f-40a5-8a66-5d6d79e54393)
 
 
 
