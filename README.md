@@ -80,17 +80,38 @@ Below are screenshots of the application in action on the Heroku website, but I 
 
 ![4](https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/ca093f6b-4a98-4b47-9cd0-f3d07a50dfbf)
 
+**Transaction history by one bank account**
+<img width="296" alt="clientCardHistory" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/60feaf8f-8750-4d37-a179-8036842c9dce">
 
 **Check client's info**
 
 ![35108D2C-13FC-4BC0-81D9-9AC2FF739346](https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/8a0d3679-d519-4e8b-9f8e-2c2f36158efa)
 
+**Storing passwords in the DB**
+<img width="1083" alt="passwordStore" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/b1feeb80-0495-4fde-932c-66b649ff723a">
+
 ## Manager view
-**CManager's email verification**
+**Manager's email verification**
+
+<img width="1369" alt="emailcheckingManagerRegistration" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/d5db44b2-a93f-4afe-babd-9873355c21f4">
+
 **Manager dashboard**
+
+<img width="1432" alt="managerDashboard" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/1b6cc872-789b-4696-8dcb-5583e71b3c73">
+
+**Open account restriction**
+
+<img width="1432" alt="managerClientAccountRestriction" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/85bbf2c2-467b-48b8-b336-a911a6d071a0">
+
 **Access denied page**
 
+<img width="1435" alt="accessDenied" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/d729d95c-80e7-404c-ba89-937e61ed0272">
+
 ## Admin view
+
+**Admin dashboard**
+
+<img width="1432" alt="adminDashboard" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/3e864308-0b25-46c2-b491-561cd2c94651">
 
 **Change manager's data (except of ID number)**
 
@@ -99,6 +120,10 @@ Below are screenshots of the application in action on the Heroku website, but I 
 **Filtering transactions**
 
 ![adminFilteringTransactions](https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/fa9e3a6d-e56f-40a5-8a66-5d6d79e54393)
+
+**Change manager for client**
+
+<img width="1435" alt="ADMINmanagerChangintForClient" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/852fd652-969e-438a-b264-0cd45d0533fa">
 
   <img width="1369" alt="Снимок экрана 2023-09-05 в 19 17 34" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/d0fc72d6-55bc-430f-9ee2-236c1cb3c284">
 
