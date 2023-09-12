@@ -70,62 +70,75 @@ Below are screenshots of the application in action on the Heroku website, but I 
   <img width="1435" alt="Снимок экрана 2023-09-05 в 17 25 14" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/66119e07-7611-44cd-9777-a3de9962894e">
 
 
-**Replenishment process**
+**-Replenishment process**
 
 
 ![3031B9FB-9E52-4DA6-BFA4-3207C02861CD](https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/701092c5-930a-4976-a314-fac3322c69f3)
 
 
-**Transfer money process**
+**-Transfer money process**
 
 ![4](https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/ca093f6b-4a98-4b47-9cd0-f3d07a50dfbf)
 
-**Transaction history by one bank account**
+
+
+**-Transaction history by one bank account**
 
 <img width="296" alt="clientCardHistory" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/60feaf8f-8750-4d37-a179-8036842c9dce">
 
-**Check client's info**
+
+
+**-Check client's info**
 
 ![35108D2C-13FC-4BC0-81D9-9AC2FF739346](https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/8a0d3679-d519-4e8b-9f8e-2c2f36158efa)
 
-**Storing passwords in the DB**
+
+
+**-Storing passwords in the DB**
 <img width="1083" alt="passwordStore" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/b1feeb80-0495-4fde-932c-66b649ff723a">
 
 ## Manager view
-**Manager's email verification**
+**-Manager's email verification**
 
 <img width="1369" alt="emailcheckingManagerRegistration" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/d5db44b2-a93f-4afe-babd-9873355c21f4">
 
-**Manager dashboard**
+**-Manager dashboard**
 
 <img width="1432" alt="managerDashboard" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/1b6cc872-789b-4696-8dcb-5583e71b3c73">
 
-**Open account restriction**
+**-Open account restriction**
 
 <img width="1432" alt="managerClientAccountRestriction" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/85bbf2c2-467b-48b8-b336-a911a6d071a0">
 
-**Access denied page**
+**-Access denied page**
 
 <img width="1435" alt="accessDenied" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/d729d95c-80e7-404c-ba89-937e61ed0272">
 
 ## Admin view
 
-**Admin dashboard**
+**-Admin dashboard**
 
 <img width="1432" alt="adminDashboard" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/3e864308-0b25-46c2-b491-561cd2c94651">
 
-**Checking manager and his clients information**
+
+**-Checking manager and his clients information**
   ![Sept-11-2023 11-08-17](https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/6ae7bad2-ea1e-42dc-8260-7f811c1f8133)
 
-**Change manager's data (except of ID number)**
+  
+
+**-Change manager's data (except of ID number)**
 
 ![changeManagerData](https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/b2c29c0e-a618-4bad-b131-89031f3131f1)
 
-**Filtering transactions**
+
+
+**-Filtering transactions**
 
 ![adminFilteringTransactions](https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/fa9e3a6d-e56f-40a5-8a66-5d6d79e54393)
 
-**Change manager for client**
+
+
+**-Change manager for client**
 
 <img width="1435" alt="ADMINmanagerChangintForClient" src="https://github.com/MarynaVoloshyna/OnlineBankingApplication/assets/115135949/852fd652-969e-438a-b264-0cd45d0533fa">
 
