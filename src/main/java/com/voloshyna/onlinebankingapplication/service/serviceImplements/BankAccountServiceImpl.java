@@ -20,7 +20,7 @@ public class BankAccountServiceImpl implements BankAccountService {
     @Autowired
     private ClientRepository clientRepository;
     @Autowired
-    BankAccountRepository bankAccountRepository;
+    private BankAccountRepository bankAccountRepository;
 
     /*
     Creating of bank account.
